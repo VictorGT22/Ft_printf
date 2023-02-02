@@ -6,12 +6,12 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:30:53 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 09:24:20 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:14:27 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-#include "libft.h"
+#include "../includes/include/ft_printf.h"
+
 
 s_Main *inti_structs()
 {

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:13:04 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 13:47:06 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ int	func_s(va_list list, t_list *info)
 	int width;
 
 	s = va_arg(list, char *);
-	width = atoi(info->width) - ft_strlen(s);
+	width = atoi(info->width);
+	width -= s == NULL ? 6 : ft_strlen(s);
 	if (width < 0)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))

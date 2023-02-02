@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:21:08 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:22:38 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:53:22 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 int				ft_isalpha(char c);
 int				ft_strlen(const char *str);
-int				ft_nbrlen(long int nbr);
+int				ft_nbrlen(long long int nbr);
 int				ft_isdigit(char c);
 int				ft_isalnum(char c);
 int				ft_isascii(int c);

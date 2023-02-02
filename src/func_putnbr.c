@@ -6,12 +6,11 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 22:46:27 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:31:17 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:10:20 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
-#include "libft.h"
+#include "../includes/include/ft_printf.h"
 
 void	ft_putnbr_base_u(unsigned long long int nb, char *base)
 {
@@ -20,16 +19,16 @@ void	ft_putnbr_base_u(unsigned long long int nb, char *base)
 		nb *= -1;
 		write(1, "-", 1);
 	}
-	if (nb >= ft_strlen(base))
+	if (nb >= (unsigned long long int)ft_strlen(base))
 	{
-		ft_putnbr_base_u(nb / ft_strlen(base), base);
-		ft_putnbr_base_u(nb % ft_strlen(base), base);
+		ft_putnbr_base_u(nb / (unsigned long long int)ft_strlen(base), base);
+		ft_putnbr_base_u(nb % (unsigned long long int)ft_strlen(base), base);
 	}
-	if (nb < ft_strlen(base))
+	if (nb < (unsigned long long int)ft_strlen(base))
 		write(1, &base[nb], 1);
 }
 
-void	ft_putnbr_base(int nb, char *base)
+void	ft_putnbr_base(long int nb, char *base)
 {
 	if (nb < 0)
 	{
@@ -62,11 +61,22 @@ void	ft_itoa_base(unsigned long int nb, char *base, char *arr, int *i)
 
 void	ft_putnbr_base_l(unsigned long int nb, char *base)
 {
-	if (nb >= ft_strlen(base))
+	if (nb >= (unsigned long long int)ft_strlen(base))
 	{
-		ft_putnbr_base_l(nb / ft_strlen(base), base);
-		ft_putnbr_base_l(nb % ft_strlen(base), base);
+		ft_putnbr_base_l(nb / (unsigned long long int)ft_strlen(base), base);
+		ft_putnbr_base_l(nb % (unsigned long long int)ft_strlen(base), base);
 	}
-	if (nb < ft_strlen(base))
+	if (nb < (unsigned long long int)ft_strlen(base))
+		write(1, &base[nb], 1);
+}
+
+void	ft_putnbr_base_ll(long long int nb, char *base)
+{
+	if (nb >= (long long int)ft_strlen(base))
+	{
+		ft_putnbr_base_ll(nb / (long long int)ft_strlen(base), base);
+		ft_putnbr_base_ll(nb % (long long int)ft_strlen(base), base);
+	}
+	if (nb < (long long int)ft_strlen(base))
 		write(1, &base[nb], 1);
 }

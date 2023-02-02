@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:37:20 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:37:34 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 10:50:42 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	precision_reduce(double num, int prec)
 {
-	char *arr_num;
-	int i;
+	char	*arr_num;
+	int		i;
 
 	i = 0;
 	arr_num = malloc(sizeof(char) * ft_nbrlen(prec));
@@ -26,16 +26,18 @@ int	precision_reduce(double num, int prec)
 	return (prec - (i + 1));
 }
 
-char	*get_lower_num(double num, t_list *info, char c)
+void	get_lower_num(double num, t_list *info, char c)
 {
-	long unit_part;
-	double deci_part;
-	int precision = atoi(info->precision);
-	int exp;
-	int i = 0;
+	long	unit_part;
+	double	deci_part;
+	int		precision;
+	int		exp;
+	int		i;
 
-	ft_itoa_base(atoi(info->precision) - (precision_reduce(num, atoi(info->precision)) + 1),
-	"0123456789", info->precision, &i);
+	i = 0;
+	precision = atoi(info->precision);
+	ft_itoa_base(atoi(info->precision) - (precision_reduce(num,
+				atoi(info->precision)) + 1), "0123456789", info->precision, &i);
 	exp = get_exponent(&num);
 	unit_part = num;
 	deci_part = num - unit_part;
@@ -44,19 +46,21 @@ char	*get_lower_num(double num, t_list *info, char c)
 	write_exp(exp);
 }
 
-char	*get_lower_num2(double num, t_list *info)
+void get_lower_num2(double num, t_list *info)
 {
-	long unit_part;
-	double deci_part;
-	int precision = atoi(info->precision);
-	int	i;
+	long	unit_part;
+	double	deci_part;
+	int		precision;
+	int		i;
 
 	i = 0;
+	precision = atoi(info->precision);
 	unit_part = num;
 	deci_part = num - unit_part;
 	if (atoi(info->precision) - ft_nbrlen(num) > 0)
 	{
-		ft_itoa_base(atoi(info->precision) - ft_nbrlen(num), "0123456789", info->precision, &i);
+		ft_itoa_base(atoi(info->precision) - ft_nbrlen(num),
+			"0123456789", info->precision, &i);
 		print_decimal_part(unit_part, deci_part, info, "0123456789");
 	}
 	else
@@ -65,10 +69,10 @@ char	*get_lower_num2(double num, t_list *info)
 
 int	func_g(va_list list, t_list *info)
 {
-	int exp;
-	double num;
-	long unit_part;
-	double deci_part;
+	int		exp;
+	double	num;
+	long	unit_part;
+	double	deci_part;
 
 	num = va_arg(list, double);
 	unit_part = num;
@@ -77,13 +81,14 @@ int	func_g(va_list list, t_list *info)
 		get_lower_num(num, info, 'e');
 	else
 		get_lower_num2(num, info);
+	return (0);
 }
 
 int	func_G(va_list list, t_list *info)
 {
-	double num;
-	long unit_part;
-	double deci_part;
+	double	num;
+	long	unit_part;
+	double	deci_part;
 
 	num = va_arg(list, double);
 	unit_part = num;
@@ -92,4 +97,5 @@ int	func_G(va_list list, t_list *info)
 		get_lower_num(num, info, 'E');
 	else
 		get_lower_num2(num, info);
+	return (0);
 }

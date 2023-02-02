@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:16:56 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:12:44 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 14:23:30 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	func_p(va_list list, t_list *info)
 	if (ft_is_inarr(info->flag, "+"))
 		write(1, "+", 1);
 	write(1, "0x", 2);
-	ft_putptr(ptr, "0123456789abcdef");
+	if (ptr == 0)
+		write(1, "0", 1);
+	else
+		ft_putptr(ptr, "0123456789abcdef");
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
 		write_width(width);
 	return (width + ft_ptrlen(ptr) + 2 + ft_is_inarr(info->flag, "+"));

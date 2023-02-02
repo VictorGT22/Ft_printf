@@ -6,7 +6,7 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
-#    Updated: 2023/02/02 10:38:31 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/02 14:17:54 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,10 @@ OBJ_DIR = obj/
 SRC_FILES	=	ft_printf 				\
 				func_ptr				\
 				func_putnbr 			\
-				func_s 					\
-				print 					\
+				utils_1					\
+				utils_2					\
 				std_func 				\
+				main					\
 				func_conv/func_s_c 		\
 				func_conv/func_e_f		\
 				func_conv/func_p		\
@@ -45,7 +46,7 @@ OBJECTS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 OBJF		=	.cache_exists
 
-EXECUTABLE = program
+EXECUTABLE = libftprintf.a
 
 INCLUDES = -I./includes/include/
 
@@ -70,12 +71,15 @@ WHITE = \033[0;97m
 all: libft $(EXECUTABLE) 
 
 $(EXECUTABLE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) $(LIB) -o $(EXECUTABLE)
-	@echo "$(MAGENTA)======>$(GREEN)$(EXECUTABLE) compiled! $(MAGENTA)<======$(DEF_COLOR)"
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) $(LIB) -o $(EXECUTABLE) ## este es ejecutable
 
+##	ar -rcs $(EXECUTABLE) $(INCLUDES) $(OBJECTS) $(LIB)
+	@echo "$(MAGENTA)======>$(GREEN)$(EXECUTABLE) compiled! $(MAGENTA)<======$(DEF_COLOR)"
+##
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@echo "$(MAGENTA)======>$(GREEN)Compiling: $(YELLOW)$< $(DEF_COLOR)"
+##	${CC} ${CFLAGS} -MMD -I $(LIB) -c $< -o $@
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJF):

@@ -6,11 +6,11 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 18:04:21 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/01 16:23:38 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:15:16 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/include/ft_printf.h"
 
 int func_ptr(s_Main *var, va_list list)
 {

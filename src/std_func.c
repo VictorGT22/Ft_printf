@@ -6,11 +6,11 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:19:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:08:15 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:06:03 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "../includes/include/ft_printf.h"
 
 void fill_operations2(s_fnc_ptr *operations)
 {
@@ -95,7 +95,7 @@ int	ft_myputstr(char *str)
 	return (i);
 }
 
-void	ft_len_nbr_base(unsigned long long int nb, char *base, int *len)
+void	ft_len_nbr_base(long long int nb, char *base, int *len)
 {
 	if (nb >= ft_strlen(base))
 	{

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:29:11 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 09:47:22 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/02 15:10:38 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdint.h>
+# include "../../lib/my/libft.h"
 
 int	ft_printf(const char *str, ...);
 
@@ -32,14 +33,14 @@ void ft_arrset(char **arr, char *str, int len);
 
 //putnbr_base
 void	ft_itoa_base(unsigned long int nb, char *base, char *arr, int *i);
-void	ft_putnbr_base(int nb, char *base);
+void	ft_putnbr_base(long int nb, char *base);
 void	ft_putnbr_base_l(unsigned long int nb, char *base);
-void	ft_len_nbr_base(unsigned long long int nb, char *base, int *len);
+void	ft_len_nbr_base(long long int nb, char *base, int *len);
 void	func_flag_length(va_list list, t_list *info, char *base);
 void	ft_putnbr_base_u(unsigned long long int nb, char *base);
 
 //std functions
-int ft_nbrlen(long int nb);
+int ft_nbrlen(long long int nb);
 void	write_width(int width);
 int	ft_ptrlen(uintptr_t num);
 
@@ -47,6 +48,8 @@ char	**str_word_arr(char *str, char sep);
 int func_ptr(s_Main *var, va_list list);
 int	get_params(s_Main *var, char *str, va_list list);
 void fill_operations(s_fnc_ptr *operations);
+void	ft_putnbr_base_ll(long long int nb, char *base);
+
 
 //free
 void	free_all(s_Main *var);
@@ -58,9 +61,9 @@ void	get_precision(s_Main *var, char *str, int *i);
 int		get_flags(s_Main *var, char *str, int *i);
 int		get_params(s_Main *var, char *str, va_list list);
 
-int	flag_sign(int nbr, t_list *info);
+int	flag_sign(long long int nbr, t_list *info);
 int	get_exponent(double *num);
-int	print_decimal_part(long num, double decimal, t_list *info, char *base);
+void	print_decimal_part(long num, double decimal, t_list *info, char *base);
 void	write_exp(int exp);
 void	ft_putptr(uintptr_t num, char *base);
 //functions flags
