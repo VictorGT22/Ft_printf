@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 12:18:37 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/03 06:14:29 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,16 @@ int	func_k(va_list list, t_list *info)
 	(void)list;
 	//ft_putstr(va_arg(list, char *));
 	return (1);
+}
+
+void put_c_num(char c, int n)
+{
+	int i;
+
+	i = 0;
+	while(i < n)
+	{
+		write(1, &c, 1);
+		i++;
+	}
 }

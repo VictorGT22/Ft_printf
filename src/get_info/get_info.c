@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 09:39:29 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/03 07:25:40 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	get_precision(s_Main *var, char *str, int *i)
 			j++;
 		}
 		var->current_ptr->precision[j] = '\0';
+		var->current_ptr->flag[var->current_ptr->num_flags] = ".";
+		var->current_ptr->num_flags++;
 	}
 	else
 		var->current_ptr->precision[0] = '\0';

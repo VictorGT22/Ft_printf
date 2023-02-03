@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 22:46:27 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 15:10:20 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/03 06:01:51 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,7 @@ void	ft_putnbr_base_u(unsigned long long int nb, char *base)
 
 void	ft_putnbr_base(long int nb, char *base)
 {
-	if (nb < 0)
-	{
-		nb *= -1;
-		write(1, "-", 1);
-	}
+
 	if (nb >= ft_strlen(base))
 	{
 		ft_putnbr_base(nb / ft_strlen(base), base);

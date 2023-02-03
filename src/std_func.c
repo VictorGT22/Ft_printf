@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:19:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 15:06:03 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/03 08:10:18 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,17 @@ void fill_operations(s_fnc_ptr *operations)
     fill_operations2(operations);
 }
 
-int	ft_myputstr(char *str)
+int	ft_myputstr(char *str, t_list *info)
 {
 	int i;
+    int len;
 
 	i = 0;
-	if (str == NULL)
-	{
-		write(1, "(null)", 6);
-		return (6);
-	}
-	while (str[i] != '\0')
+    if (str == NULL)
+		return (write(1, "(null)", 6));
+    len = ft_is_inarr(info->flag, ".") ? atoi(info->precision) : ft_strlen(str);
+    len = info->no_val_prec ? 0 : len;
+    while (str[i] != '\0' && i < len)
 	{
 		write(1, &str[i], 1);
 		i++;
@@ -101,6 +101,17 @@ void	ft_len_nbr_base(long long int nb, char *base, int *len)
 	{
 		ft_len_nbr_base(nb / ft_strlen(base), base, len);
 		ft_len_nbr_base(nb % ft_strlen(base), base, len);
+	}
+	if (nb < ft_strlen(base))
+		*len += 1;
+}
+
+void	ft_len_nbr_base_u(unsigned long int nb, char *base, int *len)
+{
+	if (nb >= ft_strlen(base))
+	{
+		ft_len_nbr_base_u(nb / ft_strlen(base), base, len);
+		ft_len_nbr_base_u(nb % ft_strlen(base), base, len);
 	}
 	if (nb < ft_strlen(base))
 		*len += 1;

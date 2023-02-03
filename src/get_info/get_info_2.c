@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:13:29 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/03 08:11:34 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ int	ext_get_params(s_Main *var, char *str, int i)
 	int len;
 
 	len = i;
-	var->current_ptr->flag = ft_calloc(sizeof(char *), 5);
-	var->current_ptr->precision = malloc(sizeof(char) * 5);
+	var->current_ptr->flag = ft_calloc(sizeof(char *), 6);
+	var->current_ptr->precision = ft_calloc(sizeof(char), 5);
 	var->current_ptr->index = i;
+	var->current_ptr->no_val_prec = 0;
 	var->current_ptr->num_flags = 0;
 	ft_arrset(var->current_ptr->flag, NULL, 5);
 	i++;
@@ -45,6 +46,8 @@ int	ext_get_params(s_Main *var, char *str, int i)
 	var->current_ptr->len = i - len;
 	if (ft_is_inarr(var->current_ptr->flag, " "))
 		write(1, " ", 1);
+	if (ft_is_inarr(var->current_ptr->flag, ".") && !var->current_ptr->precision[0])
+		var->current_ptr->no_val_prec = 1;
 	var->current_ptr->precision = !var->current_ptr->precision[0] ?
 		strcpy(var->current_ptr->precision, "6") : var->current_ptr->precision;
 	return (i);

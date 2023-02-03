@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 13:47:06 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/03 07:16:44 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,20 @@ int	func_c(va_list list, t_list *info)
 	char c;
 	int width;
 
-	c = va_arg(list, int);
-	width = atoi(info->width) - 1;
-	if (width < 0)
-		width = 0;
-	if (width > 0 && !ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	write(1, &c, 1);
-	if (width > 0 && ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	return (1 + width);
+	if (atoi(info->precision) > 0)
+	{
+		c = va_arg(list, int);
+		width = atoi(info->width) - 1;
+		if (width < 0)
+			width = 0;
+		if (width > 0 && !ft_is_inarr(info->flag, "-"))
+			write_width(width);
+		write(1, &c, 1);
+		if (width > 0 && ft_is_inarr(info->flag, "-"))
+			write_width(width);
+		return (1 + width);
+	}
+	return (0);
 }
 
 int	func_C(va_list list, t_list *info)
@@ -59,7 +63,7 @@ int	func_s(va_list list, t_list *info)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))
 		write_width(width);
-	total = ft_myputstr(s);
+	total = ft_myputstr(s, info);
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
 		write_width(width);
 	return (total + width);
@@ -72,12 +76,13 @@ int	func_S(va_list list, t_list *info)
 	int width;
 
 	s = va_arg(list, char *);
-	width = atoi(info->width) - ft_strlen(s);
+	width = atoi(info->width);
+	width -= s == NULL ? 6 : ft_strlen(s);
 	if (width < 0)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))
 		write_width(width);
-	total = ft_myputstr(s);
+	total = ft_myputstr(s, info);
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
 		write_width(width);
 	return (total + width);

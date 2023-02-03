@@ -5,96 +5,72 @@
 #                                                     +:+ +:+         +:+      #
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
-#    Updated: 2023/02/02 14:17:54 by victgonz         ###   ########.fr        #
+#    Created: 2023/01/21 23:08:02 by efrre-m           #+#    #+#              #
+#    Updated: 2023/02/03 04:10:19 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-####	VARIABLES	####
+HEADER = includes/include/
+NAME = libftprintf.a
+
+SRCS =	src/ft_printf.c 				\
+			src/func_ptr.c				\
+			src/func_putnbr.c 			\
+			src/utils_1.c					\
+			src/utils_2.c					\
+			src/std_func.c 				\
+			src/func_conv/func_s_c.c 		\
+			src/func_conv/func_e_f.c		\
+			src/func_conv/func_p.c		\
+			src/func_conv/func_u.c		\
+			src/func_conv/func_x.c		\
+			src/func_conv/func_o.c		\
+			src/func_conv/func_d_i.c		\
+			src/func_conv/func_b.c		\
+			src/func_conv/func_g.c		\
+			src/func_conv/func_n.c		\
+			src/get_info/get_info.c	 	\
+			src/get_info/get_info_2.c		\
+			src/free_info/free_1.c
+
+LIBS_DIR = lib/my
+
 CC = gcc
+RM = rm -f
+CFLAGS = 
 
-CFLAGS = -std=c99
+OBJS = ${SRCS:.c=.o}
 
-SRC_DIR = src/
+OBJBONUS = $(SRCS:.c=.o)
 
-OBJ_DIR = obj/
+%.o: %.c  $(HEADER)
+	$(CC) $(CFLAGS) -I $(HEADER) -c -o $@ $<
 
-SRC_FILES	=	ft_printf 				\
-				func_ptr				\
-				func_putnbr 			\
-				utils_1					\
-				utils_2					\
-				std_func 				\
-				main					\
-				func_conv/func_s_c 		\
-				func_conv/func_e_f		\
-				func_conv/func_p		\
-				func_conv/func_u		\
-				func_conv/func_x		\
-				func_conv/func_o		\
-				func_conv/func_d_i		\
-				func_conv/func_b		\
-				func_conv/func_g		\
-				func_conv/func_n		\
-				get_info/get_info	 	\
-				get_info/get_info_2		\
-				free_info/free_1
+all: 		make_libs ${NAME}
 
-SOURCES = 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+make_libs:
+			@make -C $(LIBS_DIR)
+			
+${NAME}:	${OBJS} lib/my/libft.a
+			cp lib/my/libft.a ${NAME}
+			ar rcs ${NAME} ${OBJS} 
+			ranlib ${NAME}
 
-OBJECTS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+bonus: $(BONUS)
 
-OBJF		=	.cache_exists
+$(BONUS) : $(OBJSBONUS) lib/my/libft.a
+			cp lib/my/libft.a ${NAME}
+			ar rcs ${NAME} ${OBJSBONUS} 
+			ranlib ${NAME}
+			
+clean: 		
+			${RM} ${OBJS} ${OBJSBONUS} 
+			make clean -C $(LIBS_DIR)
 
-EXECUTABLE = libftprintf.a
+fclean: 	clean
+			${RM} ${NAME}
+			make fclean -C $(LIBS_DIR)
 
-INCLUDES = -I./includes/include/
+re:			fclean all
 
-LIB_DIR = lib/my
-
-LIB = -L./$(LIB_DIR) -lft
-
-####	COLORS	####
-
-DEF_COLOR = \033[0;39m
-GRAY = \033[0;90m
-RED = \033[0;91m
-GREEN = \033[0;92m
-YELLOW = \033[0;93m
-BLUE = \033[0;94m
-MAGENTA = \033[0;95m
-CYAN = \033[0;96m
-WHITE = \033[0;97m
-
-#### COMMANDS ####
-
-all: libft $(EXECUTABLE) 
-
-$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) $(LIB) -o $(EXECUTABLE) ## este es ejecutable
-
-##	ar -rcs $(EXECUTABLE) $(INCLUDES) $(OBJECTS) $(LIB)
-	@echo "$(MAGENTA)======>$(GREEN)$(EXECUTABLE) compiled! $(MAGENTA)<======$(DEF_COLOR)"
-##
-
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	@echo "$(MAGENTA)======>$(GREEN)Compiling: $(YELLOW)$< $(DEF_COLOR)"
-##	${CC} ${CFLAGS} -MMD -I $(LIB) -c $< -o $@
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-
-$(OBJF):
-		@mkdir -p $(OBJ_DIR)
-
-clean:
-	rm -f $(OBJECTS)
-	@echo "$(MAGENTA)======>$(BLUE)$(EXECUTABLE) object files cleaned!$(DEF_COLOR)"
-
-fclean: clean
-	rm -f $(EXECUTABLE)
-	@echo "$(MAGENTA)======>$(CYAN)$(EXECUTABLE)executable files cleaned!$(DEF_COLOR)"
-	make -C $(LIB_DIR) fclean	
-
-re: fclean all
-
-libft:
-	make -C $(LIB_DIR)
+.PHONY: all clean fclean re

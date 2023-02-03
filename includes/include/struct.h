@@ -12,6 +12,7 @@ typedef struct t_list
 	char			*precision;
 	char			conv;
 	int				len;
+	int				no_val_prec;
 	int				index;
 	int				current_total;
 	struct t_list	*prev;
