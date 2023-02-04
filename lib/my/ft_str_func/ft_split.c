@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:45:33 by victgonz          #+#    #+#             */
-/*   Updated: 2023/01/31 16:02:52 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/04 08:34:56 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*ext_split(char const *str, int s, int f)
 	char	*arr;
 
 	j = 0;
-	arr = malloc(sizeof(char) * (f - s + 1));
+	arr = ft_calloc(sizeof(char), (f - s + 1));
 	if (!arr)
 		return (NULL);
 	while (s < f)
@@ -87,7 +87,7 @@ char	**ft_split(char const *str, char c)
 {
 	char	**arr;
 
-	arr = malloc(sizeof(char *) * (num_words(str, c) + 1));
+	arr = ft_calloc(sizeof(char *), (num_words(str, c) + 1));
 	if (!str || !arr)
 		return (NULL);
 	arr = ft_split_ext(arr, str, c);

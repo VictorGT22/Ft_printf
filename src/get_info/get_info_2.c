@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/03 08:11:34 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/04 09:09:28 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,6 @@ int	ext_get_params(s_Main *var, char *str, int i)
 	while (get_flags(var, str, &i));
 	get_conv(var, str, &i);
 	var->current_ptr->len = i - len;
-	if (ft_is_inarr(var->current_ptr->flag, " "))
-		write(1, " ", 1);
 	if (ft_is_inarr(var->current_ptr->flag, ".") && !var->current_ptr->precision[0])
 		var->current_ptr->no_val_prec = 1;
 	var->current_ptr->precision = !var->current_ptr->precision[0] ?

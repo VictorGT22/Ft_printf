@@ -6,7 +6,7 @@
 int main()
 {
 	int prova = 58;
-	int i = ft_printf(" %.s\n", "-");
-	int j = printf(" %.s\n", "-");
+	int i = ft_printf(" %-01s %-02s ", "", "-");
+	int j = printf(" %-01s %-02s ", "", "-");
 	printf("%d %d\n", i, j);
 }

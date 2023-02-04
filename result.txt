@@ -1,0 +1,52 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                Welcome to Francinette, a 42 tester framework!                ║
+╚═══════════════════════╦══════════════════════════════╦═══════════════════════╝
+                        ║            printf            ║
+                        ╚══════════════════════════════╝
+⠋ Preparing framework⠙ Preparing framework⠹ Preparing framework⠸ Preparing framework⠼ Preparing framework⠴ Preparing framework⠦ Preparing framework⠧ Preparing framework⠇ Preparing framework⠏ Preparing framework⠋ Preparing framework⠙ Preparing framework⠹ Preparing framework⠸ Preparing framework⠼ Preparing framework✔ Preparing framework
+⠋ Executing: norminette⠙ Executing: norminette⠹ Executing: norminette⠸ Executing: norminette✖ Executing: norminette
+
+⠋ Executing: make fclean bonus⠙ Executing: make fclean bonus✔ Executing: make fclean bonus
+ℹ Running tests: printfTester (https://github.com/Tripouille/printfTester)
+[36m[34m[Mandatory]
+[93mcategory: c[0m
+[32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [0m
+[93mcategory: s[0m
+[32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [0m
+[93mcategory: p[0m
+[32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [0m
+[93mcategory: d[0m
+[32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK [32m10.OK [32m11.OK [32m12.OK [32m13.OK [32m14.OK [32m15.OK [32m16.OK [32m17.OK [32m18.OK [32m19.OK [32m20.OK [32m21.OK [32m22.OK [32m23.OK [32m24.OK [32m25.OK [32m26.OK [32m27.OK [32m28.OK [32m29.OK [0m
+^C[36m[35m[Bonus]
+[93mcategory: -[0m
+[37msubcategory: c[0m
+[32m1.OK [32m2.OK [32m3.OK [32m4.OK [32m5.OK [32m6.OK [32m7.OK [32m8.OK [32m9.OK 
+[37msubcategory: s[0m
+[32m10.OK [32m11.OK [32m12.OK [32m13.OK ==55225== Invalid free() / delete / delete[] / realloc()
+==55225==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==55225==    by 0x411DC9: free_linked (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x411F42: free_all (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x40EC66: ft_printf (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x409ED5: void print<char const*>(char const*, char const*) (print.hpp:66)
+==55225==    by 0x40538F: main (minus_test.cpp:40)
+==55225==  Address 0x4db6340 is 0 bytes inside a block of size 2 free'd
+==55225==    at 0x483CA3F: free (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==55225==    by 0x411EE2: free_all (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x40EC66: ft_printf (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x409ED5: void print<char const*>(char const*, char const*) (print.hpp:66)
+==55225==    by 0x40538F: main (minus_test.cpp:40)
+==55225==  Block was alloc'd at
+==55225==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==55225==    by 0x41220C: ext_split (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x412312: ft_split_ext (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x4123F8: ft_split (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x40EAE2: inti_structs (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x40EBA9: ft_printf (in /home/victor/francinette/temp/printf/printfTester/minus_test)
+==55225==    by 0x409ED5: void print<char const*>(char const*, char const*) (print.hpp:66)
+==55225==    by 0x40538F: main (minus_test.cpp:40)
+==55225== 
+[32m14.OK [32m15.OK [32m16.OK [32m17.OK [32m18.OK [32m19.OK 
+[37msubcategory: p[0m
+[32m20.OK ^Cmake: *** [Makefile:33: minus] Interrupción
+
+⠋ Compiling tests: printf-unit-test (https://github.com/ (...)⠙ Compiling tests: printf-unit-test (https://github.com/ (...)
