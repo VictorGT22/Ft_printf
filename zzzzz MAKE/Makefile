@@ -6,7 +6,7 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
-#    Updated: 2023/02/02 14:17:54 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/05 03:54:38 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,3 +98,5 @@ re: fclean all
 
 libft:
 	make -C $(LIB_DIR)
+
+.PHONY: all clean fclean re
