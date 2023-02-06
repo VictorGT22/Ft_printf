@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/06 16:25:18 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/06 16:28:23 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	func_d(va_list list, t_list *info)
 	nbr1 = nbr;
 	len = ft_nbrlen((long long)nbr);
 	width = atoi(info->width) - ft_is_inarr(info->flag, " ") - ft_is_inarr(info->flag, "+");
-	precision 
-
+	if (ft_is_inarr(info->flag, ".") &&  info->no_val_prec)
+		precision = atoi(info->precision) - len;
 	if (width < 0)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-") && (!ft_is_inarr(info->flag, "0") || ft_is_inarr(info->flag, ".")))
