@@ -5,52 +5,54 @@
 #                                                     +:+ +:+         +:+      #
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/21 23:08:02 by efrre-m           #+#    #+#              #
-#    Updated: 2023/02/05 04:21:41 by victgonz         ###   ########.fr        #
+#    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
+#    Updated: 2023/02/05 03:54:38 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-PROJECT = PRINTF
-
-LIBS_DIR = lib/my
-
-INCLUDES = includes/include/
-
-NAME = libftprintf.a
-
+####	VARIABLES	####
 CC = gcc
 
-RM = rm -f
-
-CFLAGS = 
+CFLAGS = -std=c99
 
 SRC_DIR = src/
 
-SRCS_FILES =	ft_printf.c 			\
-				func_ptr.c				\
-				func_putnbr.c 			\
-				utils_1.c				\
-				utils_2.c				\
-				std_func.c 				\
-				func_conv/func_s_c.c 	\
-				func_conv/func_e_f.c	\
-				func_conv/func_p.c		\
-				func_conv/func_u.c		\
-				func_conv/func_x.c		\
-				func_conv/func_o.c		\
-				func_conv/func_d_i.c	\
-				func_conv/func_b.c		\
-				func_conv/func_g.c		\
-				func_conv/func_n.c		\
-				get_info/get_info.c	 	\
-				get_info/get_info_2.c	\
-				free_info/free_1.c
+OBJ_DIR = obj/
 
-SRCS = $(addprefix $(SRC_DIR), $(SRCS_FILES))
+SRC_FILES	=	ft_printf 				\
+				func_ptr				\
+				func_putnbr 			\
+				utils_1					\
+				utils_2					\
+				std_func 				\
+				main					\
+				func_conv/func_s_c 		\
+				func_conv/func_e_f		\
+				func_conv/func_p		\
+				func_conv/func_u		\
+				func_conv/func_x		\
+				func_conv/func_o		\
+				func_conv/func_d_i		\
+				func_conv/func_b		\
+				func_conv/func_g		\
+				func_conv/func_n		\
+				get_info/get_info	 	\
+				get_info/get_info_2		\
+				free_info/free_1
 
-OBJS = ${SRCS:.c=.o}
+SOURCES = 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 
-OBJBONUS = $(SRCS:.c=.o)
+OBJECTS = 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+
+OBJF		=	.cache_exists
+
+EXECUTABLE = libftprintf.a
+
+INCLUDES = -I./includes/include/
+
+LIB_DIR = lib/my
+
+LIB = -L./$(LIB_DIR) -lft
 
 ####	COLORS	####
 
@@ -64,48 +66,37 @@ MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
 
-##MSG
-MSG = "HOLA\\ncomoestas\nasifunciona"
-
-
-
 #### COMMANDS ####
 
-%.o: %.c  $(INCLUDES)
-	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
+all: libft $(EXECUTABLE) 
 
-all: 		make_libs ${NAME} write_name
+$(EXECUTABLE): $(OBJECTS)
+	$(CC) $(CFLAGS) $(INCLUDES) $(OBJECTS) $(LIB) -o $(EXECUTABLE) ## este es ejecutable
 
-make_libs:
-			@make -C $(LIBS_DIR)
-			
-${NAME}:	${OBJS} lib/my/libft.a
-			cp lib/my/libft.a ${NAME}
-			ar rcs ${NAME} ${OBJS} 
-			ranlib ${NAME}
+##	ar -rcs $(EXECUTABLE) $(INCLUDES) $(OBJECTS) $(LIB)
+	@echo "$(MAGENTA)======>$(GREEN)$(EXECUTABLE) compiled! $(MAGENTA)<======$(DEF_COLOR)"
+##
 
-write_name:
-		@echo "$(MAGENTA)╔═════════════════════════════════════════╗$(DEF_COLOR)"
-		@echo "$(MAGENTA)║                  $(CYAN)$(PROJECT)$(MAGENTA)                 ║$(DEF_COLOR)"
-		@echo "$(MAGENTA)╚═══════════════╦═════════╦═══════════════╝$(DEF_COLOR)"
-		@echo "$(MAGENTA)                ║  $(GREEN)VIC'S$(MAGENTA)  ║$(DEF_COLOR)"
-		@echo "$(MAGENTA)                ╚═════════╝     $(DEF_COLOR)"
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+	@echo "$(MAGENTA)======>$(GREEN)Compiling: $(YELLOW)$< $(DEF_COLOR)"
+##	${CC} ${CFLAGS} -MMD -I $(LIB) -c $< -o $@
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-bonus: $(BONUS)
+$(OBJF):
+		@mkdir -p $(OBJ_DIR)
 
-$(BONUS) : $(OBJSBONUS) lib/my/libft.a
-			cp lib/my/libft.a ${NAME}
-			ar rcs ${NAME} ${OBJSBONUS} 
-			ranlib ${NAME}
-			
-clean: 		
-			${RM} ${OBJS} ${OBJSBONUS} 
-			make clean -C $(LIBS_DIR)
+clean:
+	rm -f $(OBJECTS)
+	@echo "$(MAGENTA)======>$(BLUE)$(EXECUTABLE) object files cleaned!$(DEF_COLOR)"
 
-fclean: 	clean
-			${RM} ${NAME}
-			make fclean -C $(LIBS_DIR)
+fclean: clean
+	rm -f $(EXECUTABLE)
+	@echo "$(MAGENTA)======>$(CYAN)$(EXECUTABLE)executable files cleaned!$(DEF_COLOR)"
+	make -C $(LIB_DIR) fclean	
 
-re:			fclean all
+re: fclean all
+
+libft:
+	make -C $(LIB_DIR)
 
 .PHONY: all clean fclean re

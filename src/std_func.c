@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:19:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/03 08:10:18 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/06 10:31:45 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	ft_myputstr(char *str, t_list *info)
 
 	i = 0;
     if (str == NULL)
-		return (write(1, "(null)", 6));
+		str = "(null)";
     len = ft_is_inarr(info->flag, ".") ? atoi(info->precision) : ft_strlen(str);
     len = info->no_val_prec ? 0 : len;
     while (str[i] != '\0' && i < len)

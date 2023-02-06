@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:16:56 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/03 05:56:56 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/06 09:18:27 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	func_p(va_list list, t_list *info)
 	if (ft_is_inarr(info->flag, "+"))
 		write(1, "+", 1);
 	if (ptr == 0)
-		total += write(1, "(nil)", 5);
+		total += write(1, "0x0", 3);
 	else
 	{
 		total += write(1, "0x", 2);
