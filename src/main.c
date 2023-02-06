@@ -8,8 +8,8 @@ int main()
 	//ft_printf("%23s\n", NULL);
 	//printf("%23s\n", NULL);
 
-	int i = ft_printf("%-5.1i\n", 1);
-	int j = printf("%-5.2i\n", 1);
+	int i = ft_printf("%5.1i\n", 1);
+	int j = printf("%5.2i\n", 12);
 
 	printf("%d %d\n", i, j);
 
