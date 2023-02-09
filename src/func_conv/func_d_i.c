@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/07 04:53:05 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/09 10:37:06 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ int func_d(va_list list, t_list *info)
 	nbr1 = nbr;
 	len = ft_nbrlen((long long)nbr);
 	width = atoi(info->width);
-
+	if (nbr == 0 && ft_is_inarr(info->flag, "."))
+		len = 0;
 	if (ft_is_inarr(info->flag, "+") && nbr >= 0)
 		width -= 1;
-
 	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec)
 	{
 		precision = atoi(info->precision) - len;
@@ -53,12 +53,12 @@ int func_d(va_list list, t_list *info)
 	}
 	else
 		flag_sign(nbr, info);
-
 	if (precision > 0)
 		put_c_num('0', precision);
 	if (width > 0 && !ft_is_inarr(info->flag, ".") && ft_is_inarr(info->flag, "0"))
 		put_c_num('0', width + ft_is_inarr(info->flag, " "));
-	ft_putnbr_base(nbr, "0123456789");
+	if (nbr != 0 || !ft_is_inarr(info->flag, "."))
+		ft_putnbr_base(nbr, "0123456789");
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
 		write_width(width);
 	if (ft_is_inarr(info->flag, " ") && nbr >= 0 && (!width || !precision))

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/03 07:25:40 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/09 12:15:47 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	get_width(s_Main *var, char *str, int *add_i)
 
 	j = 0;
 	var->current_ptr->width = malloc(sizeof(char) * 5);
+	
 	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
 		var->current_ptr->width[j] = str[i];

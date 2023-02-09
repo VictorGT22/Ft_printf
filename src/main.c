@@ -8,11 +8,17 @@ int main()
 	//ft_printf("%23s\n", NULL);
 	//printf("%23s\n", NULL);
 
-	int i = ft_printf("% -d\n", 0);
-	int j = printf("% -d\n", 0);
+	int i = ft_printf("%-120.50d%-%%-112.167X%-32.65u\n" ,-1355834522,3814946551u,404243169u);
+	int j = printf("%--120.50d%-%%-112.167X%-32.65u\n" ,-1355834522,3814946551u,404243169u);
 	printf("%d %d\n", i, j);
 
+
 /*
+	int i = ft_printf("%.0x\n", 0);
+	int j = printf("%.0x\n", 0);
+	printf("%d %d\n", i, j);
+
+
 	int i = ft_printf("%3.s\n", (char *)NULL);
 	int j = printf("%3.s\n",  (char *)NULL);
 

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:39:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/06 09:18:45 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:29:52 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_ptrlen(uintptr_t num)
 
 	len = 0;
 	if (num == 0)
-		return (3);
+		return (1);
 	while (num != 0)
 	{
 		len++;
