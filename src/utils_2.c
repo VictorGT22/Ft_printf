@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/03 06:14:29 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/10 02:29:00 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	write_exp(int exp)
 
 int	func_a(va_list list, t_list *info)
 {
-	double num;
-	long unit_part;
-	double deci_part;
+	double	num;
+	long	unit_part;
+	double	deci_part;
 
 	num = va_arg(list, double);
 	unit_part = num;
@@ -54,19 +54,15 @@ int	func_A(va_list list, t_list *info)
 
 int	func_r(va_list list, t_list *info)
 {
-	printf("func_r\n");
 	(void)info;
 	(void)list;
-	//ft_putstr(va_arg(list, int *));
 	return (1);
 }
 
 int	func_k(va_list list, t_list *info)
 {
-	printf("func_k\n");
 	(void)info;
 	(void)list;
-	//ft_putstr(va_arg(list, char *));
 	return (1);
 }
 

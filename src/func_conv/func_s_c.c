@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/06 13:08:54 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/10 03:24:12 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,20 +50,18 @@ int	func_C(va_list list, t_list *info)
 	return (1 + width);
 }
 
-int	func_s(va_list list, t_list *info)
+int	get_len(t_list *info, char *s)
 {
-	char *s;
-	int total;
-	int width;
-	int	len;
+	int len;
 
-	s = va_arg(list, char *);
 	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec)
 	{
 		if (s && ft_strlen(s) < atoi(info->precision))
 			len = ft_strlen(s);
-		else if (!s && 6 < atoi(info->precision))
+		else if (!s && 6 <= atoi(info->precision))
 			len = 6;
+		else if(!s)
+			len = 0;
 		else
 			len = atoi(info->precision);
 	}
@@ -76,12 +74,25 @@ int	func_s(va_list list, t_list *info)
 		else
 			len = 6;
 	}
+	return (len);
+}
+
+int	func_s(va_list list, t_list *info)
+{
+	char *s;
+	int total;
+	int width;
+	int	len;
+
+	s = va_arg(list, char *);
+	len = get_len(info, s);
 	width = atoi(info->width) - len;
 	if (width < 0)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))
 		write_width(width);
-	total = ft_myputstr(s, info);
+	if (s || !ft_is_inarr(info->flag, ".") || len != 0)
+		total = ft_myputstr(s, info);
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
 		write_width(width);
 	return (total + width);
@@ -92,15 +103,17 @@ int	func_S(va_list list, t_list *info)
 	char *s;
 	int total;
 	int width;
+	int	len;
 
 	s = va_arg(list, char *);
-	width = atoi(info->width);
-	width -= s == NULL ? 6 : ft_strlen(s);
+	len = get_len(info, s);
+	width = atoi(info->width) - len;
 	if (width < 0)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))
 		write_width(width);
-	total = ft_myputstr(s, info);
+	if (s || !ft_is_inarr(info->flag, ".") || len != 0)
+		total = ft_myputstr(s, info);
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
 		write_width(width);
 	return (total + width);

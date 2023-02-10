@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:30:53 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/04 09:39:51 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/10 02:27:06 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 s_Main *inti_structs()
 {
-	s_Main *var = ft_calloc(sizeof(s_Main), 1);
+	s_Main	*var;
+
+	var = ft_calloc(sizeof(s_Main), 1);
 	var->flags = ft_split((const char *)"#, ,0,+,-,h,hh,l,ll,j,z,*,$,L,", ',');
 	var->conv = ft_strdup("sSpdDioOuUxXcCeEfFgGaAnbrkp%");
 	return (var);
@@ -23,9 +25,9 @@ s_Main *inti_structs()
 
 int	ft_printf(const char *str, ...)
 {
-	s_Main *var;
-	va_list list;
-	int total;
+	s_Main	*var;
+	va_list	list;
+	int		total;
 
 	va_start(list, str);
 	var = inti_structs();

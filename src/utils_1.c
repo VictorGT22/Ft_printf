@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/06 09:26:57 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/10 02:43:18 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,15 @@ void	print_decimal_part(long num, double decimal, t_list *info, char *base)
 
 int	func_module(va_list list, t_list *info)
 {
-	int width;
-
+	(void)info;
 	(void)list;
-	width = atoi(info->width) - 1;
-	width = width < 0 ? 0 : width;
-	if (width > 0 && !ft_is_inarr(info->flag, "-"))
-		write_width(width);
 	write(1, "%", 1);
-	if (width > 0 && ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	return (width + 1);
+	return (1);
 }
 
 int	get_exponent(double *num)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (*num < 0)

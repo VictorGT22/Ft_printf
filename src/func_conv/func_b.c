@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:34:32 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/03 05:56:07 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/10 01:19:30 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	func_b(va_list list, t_list *info)
 {
-	int len;
-	int total;
-	unsigned long int nbr;
-	int width;
+	int					len;
+	int					total;
+	unsigned long int	nbr;
+	int					width;
 
 	total = 0;
 	len = 0;

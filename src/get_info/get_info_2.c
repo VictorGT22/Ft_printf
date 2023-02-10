@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/04 09:09:28 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/10 01:23:41 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	get_conv(s_Main *var, char *str, int *i)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	while (var->conv[j] != '\0')
@@ -27,7 +27,7 @@ void	get_conv(s_Main *var, char *str, int *i)
 
 int	ext_get_params(s_Main *var, char *str, int i)
 {
-	int len;
+	int	len;
 
 	len = i;
 	var->current_ptr->flag = ft_calloc(sizeof(char *), 6);
@@ -53,8 +53,8 @@ int	ext_get_params(s_Main *var, char *str, int i)
 
 int	get_params(s_Main *var, char *str, va_list list)
 {
-	int i;
-	int total;
+	int	i;
+	int	total;
 
 	i = 0;
 	total = 0;	
