@@ -6,13 +6,13 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 01:23:41 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:57:23 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
 
-void	get_conv(s_Main *var, char *str, int *i)
+void	get_conv(t_Main *var, char *str, int *i)
 {
 	int	j;
 
@@ -25,7 +25,7 @@ void	get_conv(s_Main *var, char *str, int *i)
 	}
 }
 
-int	ext_get_params(s_Main *var, char *str, int i)
+int	ext_get_params(t_Main *var, char *str, int i)
 {
 	int	len;
 
@@ -38,26 +38,29 @@ int	ext_get_params(s_Main *var, char *str, int i)
 	ft_arrset(var->current_ptr->flag, NULL, 5);
 	i++;
 	get_parameter(var, str, &i);
-	while (get_flags(var, str, &i));
+	while (get_flags(var, str, &i))
+		;
 	get_width(var, str, &i);
 	get_precision(var, str, &i);
-	while (get_flags(var, str, &i));
+	while (get_flags(var, str, &i))
+		;
 	get_conv(var, str, &i);
 	var->current_ptr->len = i - len;
-	if (ft_is_inarr(var->current_ptr->flag, ".") && !var->current_ptr->precision[0])
+	if (ft_is_inarr(var->current_ptr->flag, ".")
+		&& !var->current_ptr->precision[0])
 		var->current_ptr->no_val_prec = 1;
-	var->current_ptr->precision = !var->current_ptr->precision[0] ?
-		strcpy(var->current_ptr->precision, "6") : var->current_ptr->precision;
+	if (!var->current_ptr->precision[0])
+		var->current_ptr->precision = strcpy(var->current_ptr->precision, "6");
 	return (i);
 }
 
-int	get_params(s_Main *var, char *str, va_list list)
+int	get_params(t_Main *var, char *str, va_list list)
 {
 	int	i;
 	int	total;
 
 	i = 0;
-	total = 0;	
+	total = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')

@@ -6,7 +6,7 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
-#    Updated: 2023/02/10 01:09:36 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/15 12:04:58 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_FILES	=	ft_printf 				\
 				utils_1					\
 				utils_2					\
 				std_func 				\
+				std_func_2 				\
 				main					\
 				func_conv/func_s_c 		\
 				func_conv/func_e_f		\

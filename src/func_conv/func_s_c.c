@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 03:24:12 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:44:17 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	func_c(va_list list, t_list *info)
 {
-	char c;
-	int width;
+	char	c;
+	int		width;
 
 	if (atoi(info->precision) > 0)
 	{
@@ -33,26 +33,30 @@ int	func_c(va_list list, t_list *info)
 	return (0);
 }
 
-int	func_C(va_list list, t_list *info)
+int	func_upper_c(va_list list, t_list *info)
 {
-	char c;
-	int width;
+	char	c;
+	int		width;
 
-	c = va_arg(list, int);
-	width = atoi(info->width) - 1;
-	if (width < 0)
-		width = 0;
-	if (width > 0 && !ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	write(1, &c, 1);
-	if (width > 0 && ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	return (1 + width);
+	if (atoi(info->precision) > 0)
+	{
+		c = va_arg(list, int);
+		width = atoi(info->width) - 1;
+		if (width < 0)
+			width = 0;
+		if (width > 0 && !ft_is_inarr(info->flag, "-"))
+			write_width(width);
+		write(1, &c, 1);
+		if (width > 0 && ft_is_inarr(info->flag, "-"))
+			write_width(width);
+		return (1 + width);
+	}
+	return (0);
 }
 
 int	get_len(t_list *info, char *s)
 {
-	int len;
+	int	len;
 
 	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec)
 	{
@@ -60,12 +64,10 @@ int	get_len(t_list *info, char *s)
 			len = ft_strlen(s);
 		else if (!s && 6 <= atoi(info->precision))
 			len = 6;
-		else if(!s)
-			len = 0;
 		else
 			len = atoi(info->precision);
 	}
-	else if(ft_is_inarr(info->flag, ".") && info->no_val_prec)
+	else if (ft_is_inarr(info->flag, ".") && info->no_val_prec)
 		len = 0;
 	else
 	{
@@ -79,10 +81,10 @@ int	get_len(t_list *info, char *s)
 
 int	func_s(va_list list, t_list *info)
 {
-	char *s;
-	int total;
-	int width;
-	int	len;
+	char	*s;
+	int		total;
+	int		width;
+	int		len;
 
 	s = va_arg(list, char *);
 	len = get_len(info, s);
@@ -98,12 +100,12 @@ int	func_s(va_list list, t_list *info)
 	return (total + width);
 }
 
-int	func_S(va_list list, t_list *info)
+int	func_upper_s(va_list list, t_list *info)
 {
-	char *s;
-	int total;
-	int width;
-	int	len;
+	char	*s;
+	int		total;
+	int		width;
+	int		len;
 
 	s = va_arg(list, char *);
 	len = get_len(info, s);

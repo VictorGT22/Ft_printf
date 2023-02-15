@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 02:29:00 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 09:25:51 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	write_exp(int exp)
 		write(1, "+", 1);
 	if (exp > -10 && exp < 10)
 		write(1, "0", 1);
-	ft_putnbr_base(exp, "0123456789");	
+	ft_putnbr_base(exp, "0123456789");
 }
 
 int	func_a(va_list list, t_list *info)
@@ -39,11 +39,11 @@ int	func_a(va_list list, t_list *info)
 	return (1);
 }
 
-int	func_A(va_list list, t_list *info)
+int	func_upper_a(va_list list, t_list *info)
 {
-	double num;
-	int unit_part;
-	double deci_part;
+	double	num;
+	int		unit_part;
+	double	deci_part;
 
 	num = va_arg(list, double);
 	unit_part = num;
@@ -59,19 +59,12 @@ int	func_r(va_list list, t_list *info)
 	return (1);
 }
 
-int	func_k(va_list list, t_list *info)
+void	put_c_num(char c, int n)
 {
-	(void)info;
-	(void)list;
-	return (1);
-}
-
-void put_c_num(char c, int n)
-{
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < n)
+	while (i < n)
 	{
 		write(1, &c, 1);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:34:32 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 01:19:30 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 09:27:45 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	func_b(va_list list, t_list *info)
 	nbr = va_arg(list, unsigned long int);
 	ft_len_nbr_base(nbr, "01", &len);
 	width = atoi(info->width) - len;
-	width = width < 0 ? 0 : width;
+	if (width < 0)
+		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))
 		write_width(width);
 	ft_putnbr_base(nbr, "01");

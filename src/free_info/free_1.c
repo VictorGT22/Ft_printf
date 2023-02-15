@@ -6,13 +6,13 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 09:36:40 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 01:11:51 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:50:38 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
 
-void free_atr(s_Main *var)
+void	free_atr(t_Main *var)
 {
 	if (var->first_ptr->precision)
 		free(var->first_ptr->precision);
@@ -22,10 +22,10 @@ void free_atr(s_Main *var)
 		free(var->first_ptr->width);
 }
 
-void	free_linked(s_Main *var)
+void	free_linked(t_Main *var)
 {
-	int i;
-	t_list *temp;
+	int		i;
+	t_list	*temp;
 
 	while (var->first_ptr)
 	{
@@ -44,9 +44,9 @@ void	free_linked(s_Main *var)
 	}
 }
 
-void	free_all(s_Main *var)
+void	free_all(t_Main *var)
 {
-	int i;
+	int	i;
 
 	if (var->flags)
 	{
@@ -55,7 +55,6 @@ void	free_all(s_Main *var)
 			free(var->flags[i++]);
 		free(var->flags);
 	}
-
 	if (var->conv)
 		free(var->conv);
 	if (var->first_ptr != var->current_ptr)

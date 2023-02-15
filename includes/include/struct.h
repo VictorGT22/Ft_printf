@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   struct.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 09:06:32 by victgonz          #+#    #+#             */
+/*   Updated: 2023/02/15 11:54:59 by victgonz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef STRUCT_H
 # define STRUCT_H
 
-#include <stdarg.h>
+# include <stdarg.h>
 
 typedef struct t_list
 {
@@ -21,20 +33,19 @@ typedef struct t_list
 
 typedef struct s_func_ptr
 {
-    char op;
-    int (*ptr)(va_list list, t_list *info);
-} s_fnc_ptr;
+	char	op;
+	int		(*ptr)(va_list list, t_list *info);
+}	t_fnc_ptr;
 
-typedef struct s_Main
+typedef struct t_Main
 {
 	char		**flags;
 	char		*conv;
-	int 		num_conv;
+	int			num_conv;
 	t_list		*first_ptr;
 	t_list		*current_ptr;
-	s_fnc_ptr	*arr_func;
+	t_fnc_ptr	*arr_func;
 	int			total_len;
-}s_Main;
-
+}	t_Main;
 
 #endif

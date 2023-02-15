@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:37:20 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/02 10:50:42 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 10:31:29 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	get_lower_num(double num, t_list *info, char c)
 	write_exp(exp);
 }
 
-void get_lower_num2(double num, t_list *info)
+void	get_lower_num2(double num, t_list *info)
 {
 	long	unit_part;
 	double	deci_part;
@@ -84,7 +84,7 @@ int	func_g(va_list list, t_list *info)
 	return (0);
 }
 
-int	func_G(va_list list, t_list *info)
+int	func_upper_g(va_list list, t_list *info)
 {
 	double	num;
 	long	unit_part;

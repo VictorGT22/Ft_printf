@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 02:43:18 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 09:18:22 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	flag_sign(long long int nbr, t_list *info)
 
 void	write_width(int width)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < width)
@@ -61,10 +61,18 @@ void	print_decimal_part(long num, double decimal, t_list *info, char *base)
 
 int	func_module(va_list list, t_list *info)
 {
-	(void)info;
+	int	width;
+
 	(void)list;
+	width = atoi(info->width) - 1;
+	if (width < 0)
+		width = 0;
+	if (width > 0 && !ft_is_inarr(info->flag, "-"))
+		write_width(width);
 	write(1, "%", 1);
-	return (1);
+	if (width > 0 && ft_is_inarr(info->flag, "-"))
+		write_width(width);
+	return (1 + width);
 }
 
 int	get_exponent(double *num)

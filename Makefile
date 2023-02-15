@@ -6,7 +6,7 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 23:08:02 by efrre-m           #+#    #+#              #
-#    Updated: 2023/02/05 04:21:41 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/15 11:58:48 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRCS_FILES =	ft_printf.c 			\
 				utils_1.c				\
 				utils_2.c				\
 				std_func.c 				\
+				std_func_2.c 			\
 				func_conv/func_s_c.c 	\
 				func_conv/func_e_f.c	\
 				func_conv/func_p.c		\

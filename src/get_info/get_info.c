@@ -6,19 +6,21 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 14:40:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/10 01:18:04 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 11:50:38 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
 
-void	get_parameter(s_Main *var, char *str, int *add_i)
+void	get_parameter(t_Main *var, char *str, int *add_i)
 {
 	int	j;
-	int	i = *add_i;
-	int	start = *add_i;
+	int	i;
+	int	start;
 
 	j = 0;
+	i = *add_i;
+	start = *add_i;
 	var->current_ptr->parameter = malloc(sizeof(char) * 5);
 	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
@@ -36,7 +38,7 @@ void	get_parameter(s_Main *var, char *str, int *add_i)
 		*add_i = i + 1;
 }
 
-void	get_width(s_Main *var, char *str, int *add_i)
+void	get_width(t_Main *var, char *str, int *add_i)
 {
 	int	j;
 	int	i;
@@ -44,7 +46,6 @@ void	get_width(s_Main *var, char *str, int *add_i)
 	j = 0;
 	i = *add_i;
 	var->current_ptr->width = malloc(sizeof(char) * 5);
-	
 	while (str[i] != '\0' && ft_isdigit(str[i]))
 	{
 		var->current_ptr->width[j] = str[i];
@@ -57,7 +58,7 @@ void	get_width(s_Main *var, char *str, int *add_i)
 	*add_i = i;
 }
 
-void	get_precision(s_Main *var, char *str, int *i)
+void	get_precision(t_Main *var, char *str, int *i)
 {
 	int	j;
 
@@ -79,7 +80,7 @@ void	get_precision(s_Main *var, char *str, int *i)
 		var->current_ptr->precision[0] = '\0';
 }
 
-int	ext_get_flags(s_Main *var, char *str, int *i, int j)
+int	ext_get_flags(t_Main *var, char *str, int *i, int j)
 {
 	if (str[*i] == var->flags[j][0]
 	&& str[*i + 1] == var->flags[j][1])
@@ -94,7 +95,7 @@ int	ext_get_flags(s_Main *var, char *str, int *i, int j)
 	return (0);
 }
 
-int	get_flags(s_Main *var, char *str, int *i)
+int	get_flags(t_Main *var, char *str, int *i)
 {
 	int	j;
 
