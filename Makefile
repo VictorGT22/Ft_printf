@@ -6,7 +6,7 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 23:08:02 by efrre-m           #+#    #+#              #
-#    Updated: 2023/02/15 11:58:48 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/15 12:32:21 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,11 +64,6 @@ BLUE = \033[0;94m
 MAGENTA = \033[0;95m
 CYAN = \033[0;96m
 WHITE = \033[0;97m
-
-##MSG
-MSG = "HOLA\\ncomoestas\nasifunciona"
-
-
 
 #### COMMANDS ####
 

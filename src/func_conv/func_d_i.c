@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 11:03:38 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:44:15 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	write_external(t_list *info, long long int nbr, int width, int prec)
 	if (width > 0 && !ft_is_inarr(info->flag, "-")
 		&& (!ft_is_inarr(info->flag, "0") || ft_is_inarr(info->flag, ".")))
 		write_width(width);
-	if (ft_is_inarr(info->flag, " ") && nbr >= 0 && (!width || !prec))
+	if (ft_is_inarr(info->flag, " ") && nbr >= 0 && (!width || !prec)
+		&& !atoi(info->width))
 		write(1, " ", 1);
 	if (nbr < 0)
 	{
@@ -78,7 +79,8 @@ int	func_d(va_list list, t_list *info)
 	width = atoi(info->width);
 	precision = get_d_width_prec(info, nbr, &width, &len);
 	write_external(info, nbr, width, precision);
-	if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision))
+	if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision)
+		&& !atoi(info->width))
 		width++;
 	if (ft_is_inarr(info->flag, "+") && nbr1 >= 0)
 		width++;
@@ -99,7 +101,8 @@ int	func_upper_d(va_list list, t_list *info)
 	width = atoi(info->width);
 	precision = get_d_width_prec(info, nbr, &width, &len);
 	write_external(info, nbr, width, precision);
-	if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision))
+	if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision)
+		&& !atoi(info->width))
 		width++;
 	if (ft_is_inarr(info->flag, "+") && nbr1 >= 0)
 		width++;

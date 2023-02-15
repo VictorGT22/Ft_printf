@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:16:03 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 09:55:44 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 12:34:48 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	int	i;
 	int	j;
 
-	j = printf(" %.1d\n", 0);
-	i = ft_printf(" %.1d\n", 0);
+	j = printf("\\!/% 55.8d\\!/\n", 431741992);
+	i = ft_printf("\\!/% 55.8d\\!/\n", 431741992);
 	printf("%d %d\n", i, j);
 }
