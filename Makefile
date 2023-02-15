@@ -6,13 +6,13 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 23:08:02 by efrre-m           #+#    #+#              #
-#    Updated: 2023/02/15 12:32:21 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/15 17:46:17 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 PROJECT = PRINTF
 
-LIBS_DIR = lib/my
+LIBS_DIR = libft
 
 INCLUDES = includes/include/
 
@@ -70,15 +70,13 @@ WHITE = \033[0;97m
 %.o: %.c  $(INCLUDES)
 	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
-all: 		make_libs ${NAME} write_name
+all: 		make_libs $(NAME) write_name
 
-make_libs:
-			@make -C $(LIBS_DIR)
-			
-${NAME}:	${OBJS} lib/my/libft.a
-			cp lib/my/libft.a ${NAME}
-			ar rcs ${NAME} ${OBJS} 
-			ranlib ${NAME}
+$(NAME):	$(OBJS) libft/libft.a
+			cp libft/libft.a .
+			mv libft.a $(NAME)
+			ar rcs $(NAME) $(OBJS)
+			ranlib $(NAME)
 
 write_name:
 		@echo "$(MAGENTA)╔═════════════════════════════════════════╗$(DEF_COLOR)"
@@ -87,21 +85,19 @@ write_name:
 		@echo "$(MAGENTA)                ║  $(GREEN)VIC'S$(MAGENTA)  ║$(DEF_COLOR)"
 		@echo "$(MAGENTA)                ╚═════════╝     $(DEF_COLOR)"
 
-bonus: $(BONUS)
-
-$(BONUS) : $(OBJSBONUS) lib/my/libft.a
-			cp lib/my/libft.a ${NAME}
-			ar rcs ${NAME} ${OBJSBONUS} 
-			ranlib ${NAME}
+bonus:		all
 			
 clean: 		
-			${RM} ${OBJS} ${OBJSBONUS} 
+			$(RM) $(OBJS) $(OBJSBONUS) 
 			make clean -C $(LIBS_DIR)
 
 fclean: 	clean
-			${RM} ${NAME}
+			$(RM) $(NAME)
 			make fclean -C $(LIBS_DIR)
 
 re:			fclean all
 
-.PHONY: all clean fclean re
+make_libs:
+			@make -C $(LIBS_DIR)
+
+.PHONY: all clean fclean re bonus

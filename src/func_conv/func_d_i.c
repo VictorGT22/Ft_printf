@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 12:44:15 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 15:59:48 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	write_external(t_list *info, long long int nbr, int width, int prec)
 	if (width > 0 && !ft_is_inarr(info->flag, "-")
 		&& (!ft_is_inarr(info->flag, "0") || ft_is_inarr(info->flag, ".")))
 		write_width(width);
-	if (ft_is_inarr(info->flag, " ") && nbr >= 0 && (!width || !prec)
-		&& !atoi(info->width))
+	if (ft_is_inarr(info->flag, " ") && nbr >= 0 && (!width || !prec))
 		write(1, " ", 1);
 	if (nbr < 0)
 	{
@@ -31,7 +30,7 @@ void	write_external(t_list *info, long long int nbr, int width, int prec)
 		put_c_num('0', prec);
 	if (width > 0 && !ft_is_inarr(info->flag, ".")
 		&& ft_is_inarr(info->flag, "0"))
-		put_c_num('0', width + ft_is_inarr(info->flag, " "));
+		put_c_num('0', width);
 	if (nbr != 0 || !ft_is_inarr(info->flag, "."))
 		ft_putnbr_base(nbr, "0123456789");
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
@@ -44,6 +43,8 @@ int	get_d_width_prec(t_list *info, int nbr, int *width, int *len)
 
 	precision = 0;
 	*width = atoi(info->width);
+	if (nbr != 0 || width < len)
+		*width -= ft_is_inarr(info->flag, " ");
 	if (nbr == 0 && ft_is_inarr(info->flag, "."))
 		*len = 0;
 	if (ft_is_inarr(info->flag, "+") && nbr >= 0)
@@ -79,8 +80,7 @@ int	func_d(va_list list, t_list *info)
 	width = atoi(info->width);
 	precision = get_d_width_prec(info, nbr, &width, &len);
 	write_external(info, nbr, width, precision);
-	if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision)
-		&& !atoi(info->width))
+	if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision))
 		width++;
 	if (ft_is_inarr(info->flag, "+") && nbr1 >= 0)
 		width++;

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:29:11 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 12:17:42 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/15 17:38:51 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdint.h>
-# include "../../lib/my/libft.h"
+# include "libft.h"
 
 int		ft_printf(const char *str, ...);
 int		ft_myputstr(char *str, t_list *info);

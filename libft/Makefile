@@ -90,7 +90,7 @@ $(BONUS) : $(OBJS) $(OBJSBONUS)
 
 	ar -rcs $(NAME) $(OBJS) $(OBJSBONUS)
 
--include $(DEPS_BONUS)
+-include $(DEPS) $(DEPS_BONUS)
 
 clean:
 	$(RM) $(OBJS) $(OBJSBONUS) $(DEPS) $(DEPS_BONUS)
