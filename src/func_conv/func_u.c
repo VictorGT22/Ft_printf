@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:36:57 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 11:31:04 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/16 18:10:19 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,8 @@ void	external_u_write(t_list *info, unsigned int nbr, int width, int prec)
 {
 	if (ft_is_inarr(info->flag, " ") && nbr >= 0 && (!width || !prec))
 		write(1, " ", 1);
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		write(1, "-", 1);
-	}
-	else
-		flag_sign(nbr, info);
+	if (ft_is_inarr(info->flag, "+"))
+		write(1, "+", 1);
 	if (prec > 0)
 		put_c_num('0', prec);
 	if (width > 0 && !ft_is_inarr(info->flag, ".")

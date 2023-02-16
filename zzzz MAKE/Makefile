@@ -6,12 +6,16 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/27 15:37:53 by victgonz          #+#    #+#              #
-#    Updated: 2023/02/15 12:04:58 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/16 08:52:33 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ####	VARIABLES	####
 CC = gcc
+
+TEST        = main.c
+
+LIBTEST     = ftprintf
 
 CFLAGS = -std=c99
 
@@ -51,9 +55,11 @@ EXECUTABLE = libftprintf.a
 
 INCLUDES = -I./includes/include/
 
-LIB_DIR = lib/my
+LIB_DIR = libft/
 
-LIB = -L./$(LIB_DIR) -lft
+NAME_LIB = libft
+
+LIB = -L./$(LIB_DIR) -l$(NAME_LIB)
 
 ####	COLORS	####
 

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:29:11 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 17:38:51 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/16 19:37:35 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdint.h>
+#include <stdbool.h>
 # include "libft.h"
 
 int		ft_printf(const char *str, ...);
@@ -41,9 +42,9 @@ void	ft_putnbr_base_u(unsigned long long int nb, char *base);
 
 //std functions
 int		ft_nbrlen(long long int nb);
-void	write_width(int width);
+int		write_width(int width);
 int		ft_ptrlen(uintptr_t num);
-void	put_c_num(char c, int n);
+int		put_c_num(char c, int n);
 char	**str_word_arr(char *str, char sep);
 int		func_ptr(t_Main *var, va_list list);
 int		get_params(t_Main *var, char *str, va_list list);
@@ -62,7 +63,7 @@ int		get_params(t_Main *var, char *str, va_list list);
 int		get_width_prec(t_list *info, int nbr, int *width, int *len);
 int		get_u_width_prec(t_list *info, unsigned int nbr, int *width, int *len);
 
-int		flag_sign(long long int nbr, t_list *info);
+int		flag_sign(long long int *nbr, t_list *info);
 int		get_exponent(double *num);
 void	print_decimal_part(long num, double decimal, t_list *info, char *base);
 void	write_exp(int exp);

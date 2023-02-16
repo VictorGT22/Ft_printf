@@ -6,23 +6,35 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 17:47:05 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:15:37 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/include/ft_printf.h"
 
-int	flag_sign(long long int nbr, t_list *info)
+int	flag_sign(long long int *add_nbr, t_list *info)
 {
+	long long	nbr;
+
+	nbr = *add_nbr;
+	if (nbr < 0)
+	{
+		write(1, "-", 1);
+		nbr *= -1;
+		*add_nbr = nbr;
+		return (1);
+	}
 	if (ft_is_inarr(info->flag, "+") && nbr >= 0)
 	{
 		write (1, "+", 1);
+		*add_nbr = nbr;
 		return (1);
 	}
+	*add_nbr = nbr;
 	return (0);
 }
 
-void	write_width(int width)
+int	write_width(int width)
 {
 	int	i;
 
@@ -32,6 +44,7 @@ void	write_width(int width)
 		write(1, " ", 1);
 		i++;
 	}
+	return (width);
 }
 
 void	print_decimal_part(long num, double decimal, t_list *info, char *base)

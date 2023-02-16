@@ -6,7 +6,7 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 23:08:02 by efrre-m           #+#    #+#              #
-#    Updated: 2023/02/15 17:46:17 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/16 09:00:41 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,11 @@ PROJECT = PRINTF
 
 LIBS_DIR = libft
 
-INCLUDES = includes/include/
+TEST        = src/main.c
+
+LIBTEST     = ftprintf
+
+INCLUDES = includes/include
 
 NAME = libftprintf.a
 
@@ -96,6 +100,9 @@ fclean: 	clean
 			make fclean -C $(LIBS_DIR)
 
 re:			fclean all
+
+test:	$(NAME)
+		$(CC) $(TEST) -L. -l$(LIBTEST) $(CFLAGS) -I $(INCLUDES)
 
 make_libs:
 			@make -C $(LIBS_DIR)

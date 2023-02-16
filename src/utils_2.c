@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 17:47:05 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/16 16:49:15 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	func_r(va_list list, t_list *info)
 	return (1);
 }
 
-void	put_c_num(char c, int n)
+int	put_c_num(char c, int n)
 {
 	int	i;
 
@@ -69,4 +69,5 @@ void	put_c_num(char c, int n)
 		write(1, &c, 1);
 		i++;
 	}
+	return (n);
 }
