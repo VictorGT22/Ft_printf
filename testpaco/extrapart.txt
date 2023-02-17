@@ -1,0 +1,16 @@
+
+Error in test 6: ft_printf("%.s, %.s, %.s, %.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24694, but expected: 6
+Error in test 12: ft_printf("%1.s, %1.s, %1.s, %1.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24698, but expected: 10
+Error in test 18: ft_printf("%5.s, %5.s, %5.s, %5.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24714, but expected: 26
+Error in test 24: ft_printf("%10.s, %10.s, %10.s, %10.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24734, but expected: 46
+Error in test 30: ft_printf("%100.s, %100.s, %100.s, %100.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 25094, but expected: 406
+Error in test 41: ft_printf("%-.s, %-.s, %-.s, %-.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24694, but expected: 6
+Error in test 42: ft_printf("%-.0s, %-.0s, %-.0s, %-.0s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 7, but expected: 6
+Error in test 47: ft_printf("%-1.s, %-1.s, %-1.s, %-1.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24698, but expected: 10
+Error in test 48: ft_printf("%-1.0s, %-1.0s, %-1.0s, %-1.0s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 11, but expected: 10
+Error in test 53: ft_printf("%-5.s, %-5.s, %-5.s, %-5.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24714, but expected: 26
+Error in test 54: ft_printf("%-5.0s, %-5.0s, %-5.0s, %-5.0s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 27, but expected: 26
+Error in test 59: ft_printf("%-10.s, %-10.s, %-10.s, %-10.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 24734, but expected: 46
+Error in test 60: ft_printf("%-10.0s, %-10.0s, %-10.0s, %-10.0s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 47, but expected: 46
+Error in test 65: ft_printf("%-100.s, %-100.s, %-100.s, %-100.s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 25094, but expected: 406
+Error in test 66: ft_printf("%-100.0s, %-100.0s, %-100.0s, %-100.0s", (char *)NULL, "", "test", "joihwhhgsdkhksdgsdg\t\v\n\r\f\a25252\b6"): returned: 407, but expected: 406

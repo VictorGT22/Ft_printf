@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/16 19:56:47 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/17 11:21:32 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ int	write_external(t_list *info, long long int nbr, int width, int prec)
 		&& (!ft_is_inarr(info->flag, "0") || ft_is_inarr(info->flag, ".")))
 	{
 		total += write_width(width);
-		if (ft_is_inarr(info->flag, " "))
+		if (ft_is_inarr(info->flag, " ") && (!ft_is_inarr(info->flag, "0") || prec != 0 || nbr > 0))
 		{
 			total += write(1, " ", 1);
 			space = true;
 		}
 	}
-	else if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 || ft_is_inarr(info->flag, " ") && prec != 0)
+	else if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && !ft_is_inarr(info->flag, "+")
+		||  ((atoi(info->width) - 1) > atoi(info->precision) && !ft_is_inarr(info->flag, "-")
+		&& (prec != 0 || atoi(info->width) > ft_nbrlen(nbr1) && !width)) && !ft_is_inarr(info->flag, "+"))
 	{
 		total += write(1, " ", 1);
 		space = true;
@@ -45,9 +47,22 @@ int	write_external(t_list *info, long long int nbr, int width, int prec)
 	if (nbr != 0 || !ft_is_inarr(info->flag, "."))
 		ft_putnbr_base(nbr, "0123456789");
 	if (width && ft_is_inarr(info->flag, "-"))
+	{
 		total += write_width(width);
+		if (ft_is_inarr(info->flag, " ") && nbr1 < 0)
+		{
+			total += write(1, " ", 1);
+			space = true;
+		}
+	}
 	if (ft_is_inarr(info->flag, " ") && nbr1 < 0
-		&& atoi(info->width) > ft_nbrlen(nbr1) && !space && atoi(info->width) > atoi(info->precision))
+		&& atoi(info->width) > ft_nbrlen(nbr1) && !space
+		&& (atoi(info->width) - 1) > atoi(info->precision)
+		&& ft_is_inarr(info->flag, ".") && !ft_is_inarr(info->flag, "0"))
+		total += write(1, " ", 1);
+	if (ft_is_inarr(info->flag, " ") && nbr1 < 0
+		&& atoi(info->width) > ft_nbrlen(nbr1) && !space
+		&& !ft_is_inarr(info->flag, ".") && !ft_is_inarr(info->flag, "0") && prec == 0)
 		total += write(1, " ", 1);
 	return (total);
 }
@@ -71,9 +86,15 @@ int	get_d_width_prec(t_list *info, int nbr, int *add_width, int *len)
 		if (nbr < 0)
 			precision++;
 	}
+	if (ft_is_inarr(info->flag, " ") && ft_is_inarr(info->flag, "0")
+		&& ft_is_inarr(info->flag, ".") && nbr == 0  && (info->no_val_prec
+		||  atoi(info->precision) == 0))
+		width++;
 	if (precision <= 0)
 	{
 		width -= *len;
+		if (ft_is_inarr(info->flag, "0") && ft_is_inarr(info->flag, " ") && nbr < 0)
+			width++;
 		width -= ft_is_inarr(info->flag, " ");
 	}
 	else
@@ -105,7 +126,7 @@ int	func_d(va_list list, t_list *info)
 	width = atoi(info->width);
 	precision = get_d_width_prec(info, nbr, &width, &len);
 	total = write_external(info, nbr, width, precision);
-	printf("width: %d, precision: %d\n", width, precision);
+	//printf("width: %d, precision: %d\n", width, precision);
 	/*if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision)
 		&& (atoi(info->width) - precision) <= len)
 		width++;
@@ -133,7 +154,7 @@ int	func_upper_d(va_list list, t_list *info)
 	width = atoi(info->width);
 	precision = get_d_width_prec(info, nbr, &width, &len);
 	
-	printf("width: %d, precision: %d\n", width, precision);
+	//printf("width: %d, precision: %d\n", width, precision);
 	//write_external(info, nbr, width, precision);
 	//printf("len : %d\n", len);
 	/*if (ft_is_inarr(info->flag, " ") && nbr1 >= 0 && (!width || !precision)

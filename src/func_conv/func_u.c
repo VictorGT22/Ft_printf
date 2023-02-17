@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:36:57 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/16 18:10:19 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:32:07 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int	get_u_width_prec(t_list *info, unsigned int nbr, int *width, int *len)
 	*width = atoi(info->width);
 	if (nbr == 0 && ft_is_inarr(info->flag, "."))
 		*len = 0;
-	if (ft_is_inarr(info->flag, "+") && nbr >= 0)
+	if (ft_is_inarr(info->flag, "+"))
 		*width -= 1;
+	if (ft_is_inarr(info->flag, "#") && nbr != 0)
+		*width -= 2;
 	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec)
 	{
 		precision = atoi(info->precision) - *len;

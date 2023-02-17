@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 10:44:17 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/17 10:52:30 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int	func_c(va_list list, t_list *info)
 {
 	char	c;
+	int		total;
 	int		width;
 
+	total = 0;
 	if (atoi(info->precision) > 0)
 	{
 		c = va_arg(list, int);
@@ -24,20 +26,22 @@ int	func_c(va_list list, t_list *info)
 		if (width < 0)
 			width = 0;
 		if (width > 0 && !ft_is_inarr(info->flag, "-"))
-			write_width(width);
-		write(1, &c, 1);
+			total += write_width(width);
+		total += write(1, &c, 1);
 		if (width > 0 && ft_is_inarr(info->flag, "-"))
-			write_width(width);
-		return (1 + width);
+			total += write_width(width);
+		return (total);
 	}
-	return (0);
+	return (total);
 }
 
 int	func_upper_c(va_list list, t_list *info)
 {
 	char	c;
+	int		total;
 	int		width;
 
+	total = 0;
 	if (atoi(info->precision) > 0)
 	{
 		c = va_arg(list, int);
@@ -45,13 +49,13 @@ int	func_upper_c(va_list list, t_list *info)
 		if (width < 0)
 			width = 0;
 		if (width > 0 && !ft_is_inarr(info->flag, "-"))
-			write_width(width);
-		write(1, &c, 1);
+			total += write_width(width);
+		total += write(1, &c, 1);
 		if (width > 0 && ft_is_inarr(info->flag, "-"))
-			write_width(width);
-		return (1 + width);
+			total += write_width(width);
+		return (total);
 	}
-	return (0);
+	return (total);
 }
 
 int	get_len(t_list *info, char *s)
@@ -87,17 +91,18 @@ int	func_s(va_list list, t_list *info)
 	int		len;
 
 	s = va_arg(list, char *);
+	total = 0;
 	len = get_len(info, s);
 	width = atoi(info->width) - len;
 	if (width < 0)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))
-		write_width(width);
+		total += write_width(width);
 	if (s || !ft_is_inarr(info->flag, ".") || len != 0)
-		total = ft_myputstr(s, info);
+		total += ft_myputstr(s, info);
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	return (total + width);
+		total += write_width(width);
+	return (total);
 }
 
 int	func_upper_s(va_list list, t_list *info)
@@ -108,15 +113,16 @@ int	func_upper_s(va_list list, t_list *info)
 	int		len;
 
 	s = va_arg(list, char *);
+	total = 0;
 	len = get_len(info, s);
 	width = atoi(info->width) - len;
 	if (width < 0)
 		width = 0;
 	if (width > 0 && !ft_is_inarr(info->flag, "-"))
-		write_width(width);
+		total += write_width(width);
 	if (s || !ft_is_inarr(info->flag, ".") || len != 0)
-		total = ft_myputstr(s, info);
+		total += ft_myputstr(s, info);
 	if (width > 0 && ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	return (total + width);
+		total += write_width(width);
+	return (total);
 }
