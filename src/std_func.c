@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:19:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 17:47:05 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/20 09:04:35 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	fill_operations(t_fnc_ptr *operations)
 	operations[3].op = 'd';
 	operations[3].ptr = &func_d;
 	operations[4].op = 'D';
-	operations[4].ptr = &func_upper_d;
+	operations[4].ptr = &func_d;
 	operations[5].op = 'i';
 	operations[5].ptr = &func_d;
 	operations[6].op = 'o';

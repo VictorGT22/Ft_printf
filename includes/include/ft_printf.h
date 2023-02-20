@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:29:11 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/16 19:37:35 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/20 10:10:19 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <stdlib.h>
 # include <math.h>
 # include <stdint.h>
-#include <stdbool.h>
+# include <stdbool.h>
 # include "libft.h"
 
 int		ft_printf(const char *str, ...);
@@ -73,7 +73,6 @@ int		func_s(va_list list, t_list *info);
 int		func_upper_s(va_list list, t_list *info);
 int		func_p(va_list list, t_list *info);
 int		func_d(va_list list, t_list *info);
-int		func_upper_d(va_list list, t_list *info);
 int		func_o(va_list list, t_list *info);
 int		func_upper_o(va_list list, t_list *info);
 int		func_u(va_list list, t_list *info);
@@ -94,5 +93,12 @@ int		func_upper_a(va_list list, t_list *info);
 int		func_n(va_list list, t_list *info);
 int		func_b(va_list list, t_list *info);
 int		func_r(va_list list, t_list *info);
+
+//esternal func d
+int	write_ext_nums(t_list *info, long long int nbr, int width, int prec);
+bool	cond_first_space(t_list *info, long long int nbr1, int width, int prec);
+bool	cond_second_space(t_list *info, long long int nbr1, bool space);
+bool	cond_third_space(t_list *info, long long int nbr1, bool space, int prec);
+int	write_external(t_list *info, long long int nbr, int width, int prec);
 
 #endif

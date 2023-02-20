@@ -3,6 +3,7 @@
 		"ft_printf.h": "c",
 		"limits.h": "c",
 		"chrono": "c",
-		"ios": "c"
+		"ios": "c",
+		"type_traits": "c"
 	}
 }
