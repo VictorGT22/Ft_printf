@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:19:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 17:47:05 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/22 08:50:48 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,22 @@ int	ft_myputstr(char *str, t_list *info)
 
 void	ft_len_nbr_base(long long int nb, char *base, int *len)
 {
-	if (nb >= ft_strlen(base))
+	if (nb >= (long long)ft_strlen(base))
 	{
-		ft_len_nbr_base(nb / ft_strlen(base), base, len);
-		ft_len_nbr_base(nb % ft_strlen(base), base, len);
+		ft_len_nbr_base(nb / (long long)ft_strlen(base), base, len);
+		ft_len_nbr_base(nb % (long long)ft_strlen(base), base, len);
 	}
-	if (nb < ft_strlen(base))
+	if (nb < (long long)ft_strlen(base))
 		*len += 1;
 }
 
 void	ft_len_nbr_base_u(unsigned long int nb, char *base, int *len)
 {
-	if (nb >= ft_strlen(base))
+	if (nb >= (unsigned long)ft_strlen(base))
 	{
-		ft_len_nbr_base_u(nb / ft_strlen(base), base, len);
-		ft_len_nbr_base_u(nb % ft_strlen(base), base, len);
+		ft_len_nbr_base_u(nb / (unsigned long)ft_strlen(base), base, len);
+		ft_len_nbr_base_u(nb % (unsigned long)ft_strlen(base), base, len);
 	}
-	if (nb < ft_strlen(base))
+	if (nb < (unsigned long)ft_strlen(base))
 		*len += 1;
 }

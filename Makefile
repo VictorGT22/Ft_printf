@@ -6,7 +6,7 @@
 #    By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/21 23:08:02 by efrre-m           #+#    #+#              #
-#    Updated: 2023/02/20 10:07:21 by victgonz         ###   ########.fr        #
+#    Updated: 2023/02/22 09:19:28 by victgonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,37 +26,41 @@ CC = gcc
 
 RM = rm -f
 
-CFLAGS = 
+CFLAGS = -Wall -Werror -Wextra
 
 SRC_DIR = src/
 
-SRCS_FILES =	ft_printf.c 				\
-				func_ptr.c					\
-				func_putnbr.c 				\
-				utils_1.c					\
-				utils_2.c					\
-				std_func.c 					\
-				std_func_2.c 				\
-				func_conv/func_s_c.c 		\
-				func_conv/func_e_f.c		\
-				func_conv/func_p.c			\
-				func_conv/func_u.c			\
-				func_conv/func_x.c			\
-				func_conv/func_o.c			\
-				func_conv/func_d_i.c		\
-				func_conv/func_d_i_utils.c	\
-				func_conv/func_b.c			\
-				func_conv/func_g.c			\
-				func_conv/func_n.c			\
-				get_info/get_info.c	 		\
-				get_info/get_info_2.c		\
-				free_info/free_1.c
+OBJ_DIR = obj/
 
-SRCS = $(addprefix $(SRC_DIR), $(SRCS_FILES))
+SRCS_FILES =	ft_printf 					\
+				func_ptr					\
+				func_putnbr 				\
+				utils_1						\
+				utils_2						\
+				std_func 					\
+				std_func_2 					\
+				func_conv/func_s_c			\
+				func_conv/func_e_f			\
+				func_conv/func_p			\
+				func_conv/func_u			\
+				func_conv/func_x			\
+				func_conv/func_o			\
+				func_conv/func_d_i			\
+				func_conv/func_d_i_utils	\
+				func_conv/func_b			\
+				func_conv/func_g			\
+				func_conv/func_n			\
+				get_info/get_info	 		\
+				get_info/get_info_2			\
+				free_info/free_1
 
-OBJS = ${SRCS:.c=.o}
+SRCS = $(addprefix $(SRC_DIR),  $(addsuffix .c, $(SRCS_FILES)))
 
-OBJBONUS = $(SRCS:.c=.o)
+OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS_FILES)))
+
+OBJBONUS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCS_FILES)))
+
+OBJF        =   .cache_exists
 
 ####	COLORS	####
 
@@ -72,16 +76,19 @@ WHITE = \033[0;97m
 
 #### COMMANDS ####
 
-%.o: %.c  $(INCLUDES)
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	$(CC) $(CFLAGS) -I $(INCLUDES) -c $< -o $@
 
-all: 		make_libs $(NAME) write_name
+$(OBJF):
+			@mkdir -p $(OBJ_DIR)
 
-$(NAME):	$(OBJS) libft/libft.a
+$(NAME):	$(OBJS)
 			cp libft/libft.a .
 			mv libft.a $(NAME)
 			ar rcs $(NAME) $(OBJS)
 			ranlib $(NAME)
+
+all: 		make_libs $(NAME) write_name
 
 write_name:
 		@echo "$(MAGENTA)╔═════════════════════════════════════════╗$(DEF_COLOR)"
@@ -98,6 +105,7 @@ clean:
 
 fclean: 	clean
 			$(RM) $(NAME)
+			$(RM) -f ./a.out
 			make fclean -C $(LIBS_DIR)
 
 re:			fclean all
@@ -106,6 +114,6 @@ test:	$(NAME)
 		$(CC) $(TEST) -L. -l$(LIBTEST) $(CFLAGS) -I $(INCLUDES)
 
 make_libs:
-			@make -C $(LIBS_DIR)
+			make -C $(LIBS_DIR)
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re bonus test

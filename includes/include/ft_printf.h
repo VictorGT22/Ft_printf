@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:29:11 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/20 10:10:19 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:36:15 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,13 @@ int		func_b(va_list list, t_list *info);
 int		func_r(va_list list, t_list *info);
 
 //esternal func d
-int	write_ext_nums(t_list *info, long long int nbr, int width, int prec);
+int		write_ext_nums(t_list *info, long long int nbr, int width, int prec);
+int		write_external_2(t_list *info, long long int nbr1,
+			int width, bool *space);
 bool	cond_first_space(t_list *info, long long int nbr1, int width, int prec);
 bool	cond_second_space(t_list *info, long long int nbr1, bool space);
-bool	cond_third_space(t_list *info, long long int nbr1, bool space, int prec);
-int	write_external(t_list *info, long long int nbr, int width, int prec);
+bool	cond_third_space(t_list *info, long long int nbr1,
+			bool space, int prec);
+int		write_external(t_list *info, long long int nbr, int width, int prec);
 
 #endif

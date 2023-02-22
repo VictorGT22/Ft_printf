@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:36:57 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/17 10:32:07 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/22 08:51:28 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	func_u(va_list list, t_list *info)
 {
 	int				len;
 	unsigned int	nbr;
-	unsigned int	nbr1;
 	int				width;
 	int				precision;
 
@@ -88,7 +87,6 @@ int	func_upper_u(va_list list, t_list *info)
 {
 	int				len;
 	unsigned int	nbr;
-	unsigned int	nbr1;
 	int				width;
 	int				precision;
 

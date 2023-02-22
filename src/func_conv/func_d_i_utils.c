@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/20 11:13:36 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/02/22 09:35:10 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ int	write_ext_nums(t_list *info, long long int nbr, int width, int prec)
 bool	cond_first_space(t_list *info, long long int nbr1, int width, int prec)
 {
 	if (ft_is_inarr(info->flag, " ") && nbr1 >= 0
-		&& !ft_is_inarr(info->flag, "+") || ((atoi(info->width) - 1)
-			> atoi(info->precision) && !ft_is_inarr(info->flag, "-")
-			&& (prec != 0 || atoi(info->width) > ft_nbrlen(nbr1)
-				&& !width)) && !ft_is_inarr(info->flag, "+"))
+		&& !ft_is_inarr(info->flag, "+"))
+		return (true);
+	if (((atoi(info->width) - 1) > atoi(info->precision)
+			&& !ft_is_inarr(info->flag, "-") && (prec != 0
+				|| (atoi(info->width) > ft_nbrlen(nbr1) && !width)))
+		&& !ft_is_inarr(info->flag, "+"))
 		return (true);
 	return (false);
 }
@@ -53,10 +55,15 @@ bool	cond_third_space(t_list *info, long long int nbr1, bool space, int prec)
 {
 	if (ft_is_inarr(info->flag, " ") && nbr1 < 0
 		&& atoi(info->width) > ft_nbrlen(nbr1) && !space)
+	{
 		if (!ft_is_inarr(info->flag, ".") && !ft_is_inarr(info->flag, "0")
 			&& prec == 0)
-			return (true);
-	return (false);
+		{
+			write(1, " ", 1);
+			return (1);
+		}
+	}
+	return (0);
 }
 
 int	write_external_2(t_list *info, long long int nbr1, int width, bool *space)
@@ -74,38 +81,6 @@ int	write_external_2(t_list *info, long long int nbr1, int width, bool *space)
 		}
 	}
 	if (cond_second_space(info, nbr1, *space))
-		total += write(1, " ", 1);
-	return (total);
-}
-
-int	write_external(t_list *info, long long int nbr, int width, int prec)
-{
-	int		nbr1;
-	bool	space;
-	int		total;
-
-	nbr1 = nbr;
-	total = 0;
-	space = false;
-	if (width && !ft_is_inarr(info->flag, "-")
-		&& (!ft_is_inarr(info->flag, "0") || ft_is_inarr(info->flag, ".")))
-	{
-		total += write_width(width);
-		if (ft_is_inarr(info->flag, " ") && (!ft_is_inarr(info->flag, "0")
-				|| prec != 0 || nbr > 0))
-		{
-			total += write(1, " ", 1);
-			space = true;
-		}
-	}
-	else if (cond_first_space(info, nbr1, width, prec))
-	{
-		total += write(1, " ", 1);
-		space = true;
-	}
-	total += write_ext_nums(info, nbr, width, prec);
-	total += write_external_2(info, nbr1, width, &space);
-	if (cond_third_space(info, nbr1, space, prec))
 		total += write(1, " ", 1);
 	return (total);
 }
