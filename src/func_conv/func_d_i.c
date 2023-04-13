@@ -6,94 +6,103 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/22 09:35:23 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:23:03 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
 
-int	write_external(t_list *info, long long int nbr, int width, int prec)
+char	*add_signs(t_list *info, char *str, int neg)
 {
-	bool	space;
-	int		total;
+	char *new; //= str;
 
-	total = 0;
-	space = false;
-	if (width && !ft_is_inarr(info->flag, "-")
-		&& (!ft_is_inarr(info->flag, "0") || ft_is_inarr(info->flag, ".")))
+	if (neg == true)
 	{
-		total += write_width(width);
-		if (ft_is_inarr(info->flag, " ") && (!ft_is_inarr(info->flag, "0")
-				|| prec != 0 || nbr > 0))
-		{
-			total += write(1, " ", 1);
-			space = true;
-		}
+		new = ft_strjoin("-", str);
+		free(str);
+		return (new);
 	}
-	else if (cond_first_space(info, nbr, width, prec))
+	if (ft_is_inarr(info->flag, "+"))
 	{
-		total += write(1, " ", 1);
-		space = true;
+		new = ft_strjoin("+", str);
+		free(str);
+		return (new);
 	}
-	total += write_ext_nums(info, nbr, width, prec);
-	total += write_external_2(info, nbr, width, &space);
-	total += cond_third_space(info, nbr, space, prec);
-	return (total);
+	return (str);
 }
 
-int	get_d_width_prec(t_list *info, int nbr, int *width, int *len)
+char *add_width(t_list *info, char *str, int neg)
 {
-	int	precision;
+	char	*new;
+	int		width;
+	char	c;
+	char	*zero;
 
-	precision = 0;
-	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec)
+	zero = NULL;
+	c = ' ';
+	if (ft_is_inarr(info->flag, "0") && !ft_is_inarr(info->flag, "."))
+		c = '0';
+	width = atoi(info->width) - ft_strlen(str) - neg;
+	if (width > 0)
 	{
-		precision = atoi(info->precision) - *len;
-		if (nbr < 0)
-			precision++;
+		zero = malloc(sizeof(char) * width + 1);
+		zero = ft_memset(zero, c, width);
+		zero[width] = '\0';
+		if (ft_is_inarr(info->flag, "-"))
+			new = ft_strjoin(str, zero);
+		else
+			new = ft_strjoin(zero, str);
+		free(str);
+		free(zero);
+		return (new);
 	}
-	if (ft_is_inarr(info->flag, " ") && ft_is_inarr(info->flag, "0")
-		&& ft_is_inarr(info->flag, ".") && nbr == 0 && (info->no_val_prec
-			|| atoi(info->precision) == 0))
-			*width += 1;
-	if (precision <= 0)
+	return (str);
+}
+
+char *add_precs(t_list *info, char *str, int neg)
+{
+	char	*new;
+	int		precs;
+	char	*zero;
+
+	zero = NULL;
+	precs = atoi(info->precision) - ft_strlen(str) - neg;
+	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec && precs > 0)
 	{
-		*width -= *len;
-		if (ft_is_inarr(info->flag, "0") && ft_is_inarr(info->flag, " ")
-			&& nbr < 0)
-			*width += 1;
-		*width -= ft_is_inarr(info->flag, " ");
+		zero = malloc(sizeof(char) * precs + 1);
+		zero = ft_memset(zero, '0', precs);
+		zero[precs] = '\0';
+		new = ft_strjoin(zero, str);
+		free(str);
+		free(zero);
+		return (new);
 	}
-	else
-		*width -= (precision + *len + ft_is_inarr(info->flag, " "));
-	return (precision);
+	return (str);
 }
 
 int	func_d(va_list list, t_list *info)
 {
-	int				len;
-	long long int	nbr;
-	int				width;
-	int				precision;
-	int				total;
+	char *str;
+	bool neg;
+	int num;
+	int len;
 
-	total = 0;
-	nbr = va_arg(list, int);
-	len = ft_nbrlen((long long)nbr);
-	width = atoi(info->width);
-	if ((width < len))
-		width--;
-	if (nbr == 0 && ft_is_inarr(info->flag, "."))
-		len = 0;
-	if (ft_is_inarr(info->flag, "+") && nbr >= 0)
-		width -= 1;
-	precision = get_d_width_prec(info, nbr, &width, &len);
-	if (width <= 0)
-		width = 0;
-	if (precision < 0)
-		precision = 0;
-	total = write_external(info, nbr, width, precision);
-	if (nbr < 0)
-		total--;
-	return (total + len);
+	neg = false;
+	num = va_arg(list, int);
+	if (num < 0)
+	{
+		neg = true;
+		num = num * -1;
+	}
+	printf("numero: %d\n", num);
+	str = ft_itoa(num);
+	printf("str: %s\n", str);
+	printf("str2: %s\n", str);
+	str = add_precs(info, str, neg);
+	str = add_width(info, str, neg);
+	str = add_signs(info, str, neg);
+	len = ft_strlen(str);
+	ft_putstr_fd(str, 1);
+	free(str);
+	return (len);
 }

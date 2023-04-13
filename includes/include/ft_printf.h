@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:29:11 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/22 09:36:15 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:22:24 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ int		func_upper_a(va_list list, t_list *info);
 int		func_n(va_list list, t_list *info);
 int		func_b(va_list list, t_list *info);
 int		func_r(va_list list, t_list *info);
+
+//func prec width
+char	*add_signs(t_list *info, char *str, int neg);
+char 	*add_width(t_list *info, char *str, int neg);
+char 	*add_precs(t_list *info, char *str, int neg);
 
 //esternal func d
 int		write_ext_nums(t_list *info, long long int nbr, int width, int prec);

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/17 10:52:30 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:08:44 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 int	func_c(va_list list, t_list *info)
 {
-	char	c;
-	int		total;
-	int		width;
-
-	total = 0;
-	if (atoi(info->precision) > 0)
-	{
-		c = va_arg(list, int);
-		width = atoi(info->width) - 1;
-		if (width < 0)
-			width = 0;
-		if (width > 0 && !ft_is_inarr(info->flag, "-"))
-			total += write_width(width);
-		total += write(1, &c, 1);
-		if (width > 0 && ft_is_inarr(info->flag, "-"))
-			total += write_width(width);
-		return (total);
-	}
-	return (total);
+	//char *str;
+	char c;
+	//int len;
+	
+	(void)info;
+	c = va_arg(list, int);
+	ft_putchar_fd(c, 1);
+	/*(void)info;
+	str = malloc(sizeof(char) * 2);
+	str[0] = c;
+	str[1] = '\0';
+	str = add_signs(info, str);
+	str = add_precs(info, str);
+	str = add_width(info, str);
+	len = ft_strlen(str);
+	ft_putstr_fd(str, 1);
+	free(str);*/
+	return (1);
 }
 
 int	func_upper_c(va_list list, t_list *info)
