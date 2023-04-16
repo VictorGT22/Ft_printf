@@ -26,7 +26,7 @@ CC = gcc
 
 RM = rm -f
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = 
 
 SRC_DIR = src/
 
@@ -46,7 +46,6 @@ SRCS_FILES =	ft_printf 					\
 				func_conv/func_x			\
 				func_conv/func_o			\
 				func_conv/func_d_i			\
-				func_conv/func_d_i_utils	\
 				func_conv/func_b			\
 				func_conv/func_g			\
 				func_conv/func_n			\

@@ -39,7 +39,7 @@ void	ft_len_nbr_base(long long int nb, char *base, int *len);
 void	ft_len_nbr_base_u(unsigned long int nb, char *base, int *len);
 void	func_flag_length(va_list list, t_list *info, char *base);
 void	ft_putnbr_base_u(unsigned long long int nb, char *base);
-
+char	*ft_getptr(uintptr_t num);
 //std functions
 int		ft_nbrlen(long long int nb);
 int		write_width(int width);
@@ -67,20 +67,17 @@ int		flag_sign(long long int *nbr, t_list *info);
 int		get_exponent(double *num);
 void	print_decimal_part(long num, double decimal, t_list *info, char *base);
 void	write_exp(int exp);
-void	ft_putptr(uintptr_t num, char *base);
+void	ft_putptr(uintptr_t num, char *str, char *base);
 //functions flags
 int		func_s(va_list list, t_list *info);
 int		func_upper_s(va_list list, t_list *info);
 int		func_p(va_list list, t_list *info);
 int		func_d(va_list list, t_list *info);
 int		func_o(va_list list, t_list *info);
-int		func_upper_o(va_list list, t_list *info);
 int		func_u(va_list list, t_list *info);
-int		func_upper_u(va_list list, t_list *info);
 int		func_x(va_list list, t_list *info);
 int		func_upper_x(va_list list, t_list *info);
 int		func_c(va_list list, t_list *info);
-int		func_upper_c(va_list list, t_list *info);
 int		func_module(va_list list, t_list *info);
 int		func_e(va_list list, t_list *info);
 int		func_upper_e(va_list list, t_list *info);

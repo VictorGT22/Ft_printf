@@ -2,7 +2,7 @@ NAME = libft.a
 
 BONUS = .bonus
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = ##-Wall -Wextra -Werror
 
 SRCS = 	ft_fd_func/ft_putchar_fd.c		\
 		ft_fd_func/ft_putstr_fd.c		\
@@ -26,6 +26,8 @@ SRCS = 	ft_fd_func/ft_putchar_fd.c		\
 		ft_mem_func/ft_memmove.c		\
 		ft_mem_func/ft_memset.c			\
 		ft_nbr_func/ft_itoa.c			\
+		ft_nbr_func/ft_utoa.c			\
+		ft_nbr_func/ft_convert_base.c	\
 		ft_str_func/ft_add_in_str.c		\
 		ft_str_func/ft_instr.c			\
 		ft_str_func/ft_split.c			\

@@ -1,40 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 10:25:51 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 09:12:45 by victgonz         ###   ########.fr       */
+/*   Created: 2023/01/25 10:54:03 by victgonz          #+#    #+#             */
+/*   Updated: 2023/01/31 15:39:43 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/include/ft_printf.h"
-#include "libft.h"
+#include "../libft.h"
 
-void	ft_putptr(uintptr_t num, char *str, char *base)
+static void	utoa_getnbr(unsigned long int nbr, char *str)
 {
-	if (num >= 16)
+	if (nbr < 0)
 	{
-		ft_putptr(num / 16, str, base);
-		ft_putptr(num % 16, str, base);
+		nbr *= -1;
+		ft_add_in_str(str, '-');
+	}
+	if (nbr > 9)
+	{
+		utoa_getnbr(nbr / 10, str);
+		utoa_getnbr(nbr % 10, str);
 	}
 	else
-		ft_add_in_str(str, (base[num]));
+		ft_add_in_str(str, nbr + '0');
 }
 
-char	*ft_getptr(uintptr_t num)
+char	*ft_utoa(unsigned int n)
 {
-	char *str;
-	int len;
+	char		*str;
+	unsigned long int	nbr;
 
-	len = 0;
-	ft_len_nbr_base_u(num, "0123456789abcdef", &len);
-	str = malloc(sizeof(char) * len + 3);
+	nbr = (long int)n;
+	str = malloc(sizeof(char) * ft_nbrlen(nbr) + 1);
 	if (!str)
 		return (NULL);
-	ft_bzero(str, len);
-	ft_putptr(num, str, "0123456789abcdef");
+	ft_memset(str, '\0', ft_unbrlen(nbr) + 1);
+	utoa_getnbr(nbr, str);
 	return (str);
 }
+
+

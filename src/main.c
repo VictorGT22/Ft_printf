@@ -17,13 +17,11 @@
 
 int main()
 {
-	char valor = -14;
-	char *str = "%04d\n";
+	int valor = 34;
+	char *msg = "hola como estas";
+	char *str = "%b\n";
 	int j = ft_printf(str, valor);
-	int i = printf(str, valor);
-	printf("mio: %d, suyo: %d", j, i);
-	/*
-	printf(" %c %c %c\n", '0', 0, '1');
-	ft_printf(" %c %c %c\n", '0', 0, '1');
-	*/
+	//int i = printf(str, msg);
+	//printf("mio: %d, suyo: %d\n\n\n", j, i);
+
 }

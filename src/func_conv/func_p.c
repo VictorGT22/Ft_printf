@@ -14,29 +14,16 @@
 
 int	func_p(va_list list, t_list *info)
 {
-	int					width;
-	int					total;
-	unsigned long long	ptr;
+	int len;
+	char *str;
+	uintptr_t num;
 
-	total = 0;
-	ptr = va_arg(list, unsigned long long);
-	width = atoi(info->width) - (ft_ptrlen(ptr) + 2
-			+ ft_is_inarr(info->flag, "+"));
-	if (width < 0)
-		width = 0;
-	if (width > 0 && !ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	if (ft_is_inarr(info->flag, "+"))
-		write(1, "+", 1);
-	if (ptr == 0)
-		total += write(1, "0x0", 3);
-	else
-	{
-		total += write(1, "0x", 2);
-		total += ft_ptrlen(ptr);
-		ft_putptr(ptr, "0123456789abcdef");
-	}
-	if (width > 0 && ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	return (width + total + ft_is_inarr(info->flag, "+"));
+	len = 0;
+	num = va_arg(list, uintptr_t);
+	str = ft_getptr(num);
+	str = add_precs(info, str, false);
+	str = add_width(info, str, false);
+	len = ft_myputstr(str, info);
+	free(str);
+	return (len);
 }

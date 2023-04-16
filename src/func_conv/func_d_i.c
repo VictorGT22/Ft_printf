@@ -14,7 +14,7 @@
 
 char	*add_signs(t_list *info, char *str, int neg)
 {
-	char *new; //= str;
+	char *new;
 
 	if (neg == true)
 	{
@@ -22,10 +22,42 @@ char	*add_signs(t_list *info, char *str, int neg)
 		free(str);
 		return (new);
 	}
+	if (ft_is_inarr(info->flag, "#") && str[0] != '0' || info->conv == 'p')
+	{
+		if (info->conv == 'o' || info->conv == 'O')
+			new = ft_strjoin("0", str);
+		else if (info->conv == 'e' || info->conv == 'p')
+			new = ft_strjoin("0x", str);
+		else
+			new = ft_strjoin("0X", str);
+		free(str);
+		return (new);
+	}
 	if (ft_is_inarr(info->flag, "+"))
 	{
 		new = ft_strjoin("+", str);
 		free(str);
+		return (new);
+	}
+	return (str);
+}
+
+char *add_precs(t_list *info, char *str, int neg)
+{
+	char	*new;
+	int		precs;
+	char	*zero;
+
+	zero = NULL;
+	precs = atoi(info->precision) - ft_strlen(str);
+	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec && precs > 0)
+	{
+		zero = malloc(sizeof(char) * precs + 1);
+		zero = ft_memset(zero, '0', precs);
+		zero[precs] = '\0';
+		new = ft_strjoin(zero, str);
+		free(str);
+		free(zero);
 		return (new);
 	}
 	return (str);
@@ -39,10 +71,17 @@ char *add_width(t_list *info, char *str, int neg)
 	char	*zero;
 
 	zero = NULL;
-	c = ' ';
-	if (ft_is_inarr(info->flag, "0") && !ft_is_inarr(info->flag, "."))
+	if (ft_is_inarr(info->flag, "0") && !ft_is_inarr(info->flag, ".")
+		&& !ft_is_inarr(info->flag, "-"))
 		c = '0';
-	width = atoi(info->width) - ft_strlen(str) - neg;
+	else
+	{
+		c = ' ';
+		str = add_signs(info, str, neg);
+	}
+	if (ft_is_inarr(info->flag, "#") && str[0] != '0')
+		width--;
+	width = atoi(info->width) - ft_strlen(str) - ft_is_inarr(info->flag, "+") - neg;	
 	if (width > 0)
 	{
 		zero = malloc(sizeof(char) * width + 1);
@@ -52,31 +91,14 @@ char *add_width(t_list *info, char *str, int neg)
 			new = ft_strjoin(str, zero);
 		else
 			new = ft_strjoin(zero, str);
+		if (c == '0')
+			new = add_signs(info, new, neg);
 		free(str);
 		free(zero);
 		return (new);
 	}
-	return (str);
-}
-
-char *add_precs(t_list *info, char *str, int neg)
-{
-	char	*new;
-	int		precs;
-	char	*zero;
-
-	zero = NULL;
-	precs = atoi(info->precision) - ft_strlen(str) - neg;
-	if (ft_is_inarr(info->flag, ".") && !info->no_val_prec && precs > 0)
-	{
-		zero = malloc(sizeof(char) * precs + 1);
-		zero = ft_memset(zero, '0', precs);
-		zero[precs] = '\0';
-		new = ft_strjoin(zero, str);
-		free(str);
-		free(zero);
-		return (new);
-	}
+	if (c == '0')
+		str = add_signs(info, str, neg);
 	return (str);
 }
 
@@ -94,15 +116,10 @@ int	func_d(va_list list, t_list *info)
 		neg = true;
 		num = num * -1;
 	}
-	printf("numero: %d\n", num);
 	str = ft_itoa(num);
-	printf("str: %s\n", str);
-	printf("str2: %s\n", str);
 	str = add_precs(info, str, neg);
 	str = add_width(info, str, neg);
-	str = add_signs(info, str, neg);
-	len = ft_strlen(str);
-	ft_putstr_fd(str, 1);
+	len = ft_myputstr(str, info);
 	free(str);
 	return (len);
 }

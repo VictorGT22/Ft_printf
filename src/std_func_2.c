@@ -15,12 +15,13 @@
 int	ft_myputstr(char *str, t_list *info)
 {
 	int	i;
+	int error;
 	int	len;
 
 	i = 0;
 	if (str == NULL)
 		str = "(null)";
-	if (ft_is_inarr(info->flag, "."))
+	if (ft_is_inarr(info->flag, ".") && info->conv == 's')
 		len = atoi(info->precision);
 	else
 		len = ft_strlen(str);
@@ -28,30 +29,10 @@ int	ft_myputstr(char *str, t_list *info)
 		len = 0;
 	while (str[i] != '\0' && i < len)
 	{
-		write(1, &str[i], 1);
+		error = write(1, &str[i], 1);
+		if (error == -1)
+			return (error);
 		i++;
 	}
 	return (i);
-}
-
-void	ft_len_nbr_base(long long int nb, char *base, int *len)
-{
-	if (nb >= (long long)ft_strlen(base))
-	{
-		ft_len_nbr_base(nb / (long long)ft_strlen(base), base, len);
-		ft_len_nbr_base(nb % (long long)ft_strlen(base), base, len);
-	}
-	if (nb < (long long)ft_strlen(base))
-		*len += 1;
-}
-
-void	ft_len_nbr_base_u(unsigned long int nb, char *base, int *len)
-{
-	if (nb >= (unsigned long)ft_strlen(base))
-	{
-		ft_len_nbr_base_u(nb / (unsigned long)ft_strlen(base), base, len);
-		ft_len_nbr_base_u(nb % (unsigned long)ft_strlen(base), base, len);
-	}
-	if (nb < (unsigned long)ft_strlen(base))
-		*len += 1;
 }

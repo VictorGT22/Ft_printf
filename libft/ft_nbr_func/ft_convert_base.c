@@ -11,34 +11,38 @@
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include <stdio.h>
 
-static void	itoa_getnbr(long int nbr, char *str)
+static void	ext_convert_base(long int nbr, char *str, char *base)
 {
 	if (nbr < 0)
 	{
 		nbr *= -1;
 		ft_add_in_str(str, '-');
 	}
-	if (nbr > 9)
+	if (nbr >= ft_strlen(base))
 	{
-		itoa_getnbr(nbr / 10, str);
-		itoa_getnbr(nbr % 10, str);
+		ext_convert_base(nbr / ft_strlen(base), str, base);
+		ext_convert_base(nbr % ft_strlen(base), str, base);
 	}
 	else
 		ft_add_in_str(str, nbr + '0');
 }
 
-char	*ft_itoa(int n)
+char	*ft_convert_base(int n, char *base)
 {
 	char		*str;
 	long int	nbr;
+	int			len;
 
 	nbr = (long int)n;
-	str = malloc(sizeof(char) * ft_nbrlen(nbr) + 1);
+	len = 0;
+	ft_len_nbr_base(nbr, base, &len);
+	str = malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);
-	ft_memset(str, '\0', ft_nbrlen(nbr) + 1);
-	itoa_getnbr(nbr, str);
+	ft_memset(str, '\0', len + 1);
+	ext_convert_base(nbr, str, base);
 	return (str);
 }
 

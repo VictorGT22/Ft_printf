@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
-
+/*
 int	external_x_write(t_list *info, unsigned int nbr, int width, int prec)
 {
 	int	total;
@@ -61,39 +61,37 @@ int	external_ux_write(t_list *info, unsigned int nbr, int width, int prec)
 		total += write_width(width);
 	return (total);
 }
-
+*/
 int	func_x(va_list list, t_list *info)
 {
-	int				len;
-	int				total;
-	unsigned int	nbr;
-	int				width;
-	int				precision;
+	char *str;
+	bool neg;
+	int num;
+	int len;
 
-	total = 0;
-	len = 0;
-	nbr = va_arg(list, unsigned int);
-	ft_len_nbr_base(nbr, "0123456789abcdef", &len);
-	width = atoi(info->width);
-	precision = get_u_width_prec(info, nbr, &width, &len);
-	len += external_x_write(info, nbr, width, precision);
+	neg = false;
+	num = va_arg(list, int);
+	str = ft_convert_base(num, "0123456789abcdef");
+	str = add_precs(info, str, neg);
+	str = add_width(info, str, neg);
+	len = ft_myputstr(str, info);
+	free(str);
 	return (len);
 }
 
 int	func_upper_x(va_list list, t_list *info)
 {
-	int				len;
-	int				total;
-	unsigned int	nbr;
-	int				width;
-	int				precision;
+	char *str;
+	bool neg;
+	int num;
+	int len;
 
-	total = 0;
-	len = 0;
-	nbr = va_arg(list, unsigned int);
-	ft_len_nbr_base(nbr, "0123456789ABCDEF", &len);
-	width = atoi(info->width);
-	precision = get_u_width_prec(info, nbr, &width, &len);
-	len += external_ux_write(info, nbr, width, precision);
+	neg = false;
+	num = va_arg(list, int);
+	str = ft_convert_base(num, "0123456789ABCDEF");
+	str = add_precs(info, str, neg);
+	str = add_width(info, str, neg);
+	len = ft_myputstr(str, info);
+	free(str);
 	return (len);
 }

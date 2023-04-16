@@ -26,8 +26,6 @@ void	fill_operations3(t_fnc_ptr *operations)
 	operations[24].ptr = &func_b;
 	operations[25].op = 'r';
 	operations[25].ptr = &func_r;
-	operations[26].op = 'p';
-	operations[26].ptr = &func_p;
 }
 
 void	fill_operations2(t_fnc_ptr *operations)
@@ -39,7 +37,7 @@ void	fill_operations2(t_fnc_ptr *operations)
 	operations[12].op = 'c';
 	operations[12].ptr = &func_c;
 	operations[13].op = 'C';
-	operations[13].ptr = &func_upper_c;
+	operations[13].ptr = &func_c;
 	operations[14].op = '%';
 	operations[14].ptr = &func_module;
 	operations[15].op = 'e';
@@ -60,9 +58,9 @@ void	fill_operations(t_fnc_ptr *operations)
 	operations[0].op = 's';
 	operations[0].ptr = &func_s;
 	operations[1].op = 'S';
-	operations[1].ptr = &func_upper_s;
-	operations[2].op = 'S';
-	operations[2].ptr = &func_upper_s;
+	operations[1].ptr = &func_s;
+	operations[2].op = 'p';
+	operations[2].ptr = &func_p;
 	operations[3].op = 'd';
 	operations[3].ptr = &func_d;
 	operations[4].op = 'D';
@@ -72,10 +70,10 @@ void	fill_operations(t_fnc_ptr *operations)
 	operations[6].op = 'o';
 	operations[6].ptr = &func_o;
 	operations[7].op = 'O';
-	operations[7].ptr = &func_upper_o;
+	operations[7].ptr = &func_o;
 	operations[8].op = 'u';
 	operations[8].ptr = &func_u;
 	operations[9].op = 'U';
-	operations[9].ptr = &func_upper_u;
+	operations[9].ptr = &func_u;
 	fill_operations2(operations);
 }
