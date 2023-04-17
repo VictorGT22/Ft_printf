@@ -6,12 +6,11 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:25:51 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 09:58:39 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:52:09 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
-#include "libft.h"
 
 void	ft_putptr(uintptr_t num, char *str, char *base)
 {
@@ -34,7 +33,7 @@ char	*ft_getptr(uintptr_t num)
 	str = malloc(sizeof(char) * len + 3);
 	if (!str)
 		return (NULL);
-	str = ft_memset(str, '\0', len);
+	str = ft_memset(str, '\0', len + 3);
 	ft_putptr(num, str, "0123456789abcdef");
 	return (str);
 }

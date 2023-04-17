@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:21:08 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 09:11:25 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:37:30 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t n);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
-unsigned int	ft_strcpy(char *dest, char *src);
+char    		*ft_strcpy(char *s1, char *s2);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			**ft_split(char const *str, char c);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_itoa(int n);
-char            *ft_convert_base(int n, char *base);
+char			*ft_strcat(char *dest, char *src);
 char			*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 void			ft_striteri(char *str, void (*f)(unsigned int, char*));
 void			ft_putchar_fd(char c, int fd);
@@ -69,5 +69,6 @@ void			ft_arrset(char **arr, char *str, int len);
 int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putptr(uintptr_t num, char *base);
 void			ft_add_in_arr(char *arr, char c);
+char			*ft_convert_base(long long int n, char *base);
 
 #endif

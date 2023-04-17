@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 10:11:35 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:45:14 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,17 @@ char	*add_prefix(t_list *info, char *str)
 {
 	char *new;
 
-	if (info->conv == 'p')
-	{
-		new = ft_strjoin("0x", str);
-		free(str);
-		return (new);
-	}
-	/*if (ft_is_inarr(info->flag, "#") && str[0] != '0' || info->conv == 'p')
+	if (ft_is_inarr(info->flag, "#") && str[0] != '0' || info->conv == 'p')
 	{
 		if (info->conv == 'o' || info->conv == 'O')
 			new = ft_strjoin("0", str);
-		if (info->conv == 'e' || info->conv == 'p')
+		if (info->conv == 'e' || info->conv == 'p' || info->conv == 'x')
 			new = ft_strjoin("0x", str);
 		else
 			new = ft_strjoin("0X", str);
 		free(str);
 		return (new);
-	}*/
+	}
 	return (str);
 }
 
@@ -48,7 +42,7 @@ char	*add_signs(t_list *info, char *str, int neg)
 		free(str);
 		return (new);
 	}
-	if (ft_is_inarr(info->flag, "+"))
+	if (ft_is_inarr(info->flag, "+") && !neg)
 	{
 		new = ft_strjoin("+", str);
 		free(str);
@@ -86,6 +80,14 @@ char *add_width(t_list *info, char *str, int neg)
 	char	*zero;
 
 	zero = NULL;
+	if (ft_is_inarr(info->flag, " ") && !neg)
+	{
+		new = ft_strjoin(" ",str);
+		//ft_printf("str: %s\n", new);
+		free(str);
+		str = ft_strdup(new);
+		free(new);
+	}
 	if (ft_is_inarr(info->flag, "0") && !ft_is_inarr(info->flag, ".")
 		&& !ft_is_inarr(info->flag, "-"))
 		c = '0';
@@ -94,9 +96,12 @@ char *add_width(t_list *info, char *str, int neg)
 		c = ' ';
 		str = add_signs(info, str, neg);
 	}
-	if (ft_is_inarr(info->flag, "#") && str[0] != '0')
+	width = atoi(info->width) - ft_strlen(str) - ft_is_inarr(info->flag, "+"); // - neg
+	if (ft_is_inarr(info->flag, "#") && str[0] != '0' || ft_is_inarr(info->flag, "0") && neg)
 		width--;
-	width = atoi(info->width) - ft_strlen(str) - ft_is_inarr(info->flag, "+") - neg;
+	//printf("width: %d\n", atoi(info->width));
+	//printf("len: %d\n", ft_strlen(str));
+	//printf("total width: %d\n", width);
 	if (width > 0)
 	{
 		zero = malloc(sizeof(char) * width + 1);

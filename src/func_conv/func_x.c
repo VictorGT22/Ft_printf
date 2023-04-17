@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:03:21 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/17 10:34:13 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 12:02:14 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,15 +65,13 @@ int	external_ux_write(t_list *info, unsigned int nbr, int width, int prec)
 int	func_x(va_list list, t_list *info)
 {
 	char *str;
-	bool neg;
-	int num;
+	unsigned int num;
 	int len;
 
-	neg = false;
-	num = va_arg(list, int);
+	num = va_arg(list, unsigned int);
 	str = ft_convert_base(num, "0123456789abcdef");
-	str = add_precs(info, str, neg);
-	str = add_width(info, str, neg);
+	str = add_precs(info, str, false);
+	str = add_width(info, str, false);
 	len = ft_myputstr(str, info);
 	free(str);
 	return (len);
@@ -83,11 +81,11 @@ int	func_upper_x(va_list list, t_list *info)
 {
 	char *str;
 	bool neg;
-	int num;
+	unsigned int num;
 	int len;
 
 	neg = false;
-	num = va_arg(list, int);
+	num = va_arg(list, unsigned int);
 	str = ft_convert_base(num, "0123456789ABCDEF");
 	str = add_precs(info, str, neg);
 	str = add_width(info, str, neg);

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/13 13:08:44 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:56:30 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 
 int	func_c(va_list list, t_list *info)
 {
-	//char *str;
+	char *str;
 	char c;
-	//int len;
+	int width;
+	int len;
 	
-	(void)info;
+	len = 0;
 	c = va_arg(list, int);
-	ft_putchar_fd(c, 1);
-	/*(void)info;
-	str = malloc(sizeof(char) * 2);
-	str[0] = c;
-	str[1] = '\0';
-	str = add_signs(info, str);
-	str = add_precs(info, str);
-	str = add_width(info, str);
-	len = ft_strlen(str);
-	ft_putstr_fd(str, 1);
-	free(str);*/
-	return (1);
+	width = atoi(info->width) - 1;
+	str = malloc(sizeof(char) * width + 1);
+	str[width + 1] = '\0';
+	if (width > 0)
+		str = ft_memset(str, ' ', width);
+	if (width > 0 && !ft_is_inarr(info->flag, "-") && len != -1)
+		len += ft_myputstr(str, info);
+	if (len != -1)
+		len += write(1, &c, 1);
+	if (width > 0 && ft_is_inarr(info->flag, "-") && len != -1)
+		len += ft_myputstr(str, info);
+	free(str);
+	return (len);
 }
 
 int	func_upper_c(va_list list, t_list *info)

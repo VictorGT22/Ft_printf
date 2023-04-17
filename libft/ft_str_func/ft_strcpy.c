@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/15 09:16:03 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 12:50:50 by victgonz         ###   ########.fr       */
+/*   Created: 2023/04/17 10:42:02 by victgonz          #+#    #+#             */
+/*   Updated: 2023/04/17 10:42:42 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
-#include "../includes/include/ft_printf.h"
+#include "libft.h"
 
-int main()
+char    *ft_strcpy(char *s1, char *s2)
 {
-	char valor = 0;
-	char *str = "%59c\n";
-	int j = ft_printf(str, valor);
-	int i = printf(str, valor);
-	printf("mio: %d, suyo: %d\n\n\n", j, i);
+	int i;
+
+	i = 0;
+	while (s2[i])
+	{
+		s1[i] = s2[i];
+		i++;
+	}
+	s1[i] = s2[i];
+	return (s1);
 }

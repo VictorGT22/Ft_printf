@@ -6,11 +6,12 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:41:55 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 10:08:08 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:52:38 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+#include <strings.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -27,13 +28,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		ft_bzero(str, len_s1 + len_s2 + 1);
 		if (!str)
 			return (0);
-		x = -1;
-		while (s1[++x])
-			str[x] = s1[x];
-		x = -1;
-		while (s2[++x])
-			str[x + len_s1] = s2[x];
-		str[x + len_s1] = '\0';
+		strcpy(str, (char *)s1);
+		strcat(str, (char *)s2);
 		return (str);
 	}
 	return (NULL);

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:54:03 by victgonz          #+#    #+#             */
-/*   Updated: 2023/01/31 15:39:43 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 11:36:34 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include <stdio.h>
 
-static void	ext_convert_base(long int nbr, char *str, char *base)
+static void	ext_convert_base(long long int nbr, char *str, char *base)
 {
 	if (nbr < 0)
 	{
@@ -26,10 +26,10 @@ static void	ext_convert_base(long int nbr, char *str, char *base)
 		ext_convert_base(nbr % ft_strlen(base), str, base);
 	}
 	else
-		ft_add_in_str(str, nbr + '0');
+		ft_add_in_str(str, base[nbr]);
 }
 
-char	*ft_convert_base(int n, char *base)
+char	*ft_convert_base(long long int n, char *base)
 {
 	char		*str;
 	long int	nbr;
