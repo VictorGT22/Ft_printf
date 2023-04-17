@@ -17,12 +17,12 @@ char	*add_prefix(t_list *info, char *str)
 {
 	char *new;
 
-	/*if (info->conv == 'p')
+	if (info->conv == 'p')
 	{
 		new = ft_strjoin("0x", str);
 		free(str);
 		return (new);
-	}*/
+	}
 	/*if (ft_is_inarr(info->flag, "#") && str[0] != '0' || info->conv == 'p')
 	{
 		if (info->conv == 'o' || info->conv == 'O')
