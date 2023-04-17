@@ -17,8 +17,8 @@
 
 int main()
 {
-	int valor = 0;
-	char *str = "%5.i\n";
+	int valor = -216;
+	char *str = "%010.5i\n";
 	int j = ft_printf(str, valor);
 	int i = printf(str, valor);
 	printf("mio: %d, suyo: %d\n\n\n", j, i);

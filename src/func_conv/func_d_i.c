@@ -96,11 +96,12 @@ char *add_width(t_list *info, char *str, int neg)
 		str = add_signs(info, str, neg);
 	}
 	width = atoi(info->width) - ft_strlen(str) - ft_is_inarr(info->flag, "+"); // - neg
-	if (ft_is_inarr(info->flag, "#") && str[0] != '0' || ft_is_inarr(info->flag, "0") && neg)
+	if (ft_is_inarr(info->flag, "#") && str[0] != '0'
+		|| c != ' ' && ft_is_inarr(info->flag, "0") && neg)
 		width--;
-	//printf("width: %d\n", atoi(info->width));
-	//printf("len: %d\n", ft_strlen(str));
-	//printf("total width: %d\n", width);
+	printf("width: %d\n", atoi(info->width));
+	printf("len: %d\n", ft_strlen(str));
+	printf("total width: %d\n", width);
 	if (width > 0)
 	{
 		zero = malloc(sizeof(char) * width + 1);
