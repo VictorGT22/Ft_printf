@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 13:14:39 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:09:14 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,9 @@ char *add_width(t_list *info, char *str, int neg)
 	if (ft_is_inarr(info->flag, "#") && str[0] != '0'
 		|| c != ' ' && ft_is_inarr(info->flag, "0") && neg)
 		width--;
-	printf("width: %d\n", atoi(info->width));
-	printf("len: %d\n", ft_strlen(str));
-	printf("total width: %d\n", width);
+	//printf("width: %d\n", atoi(info->width));
+	//printf("len: %d\n", ft_strlen(str));
+	//printf("total width: %d\n", width);
 	if (width > 0)
 	{
 		zero = malloc(sizeof(char) * width + 1);

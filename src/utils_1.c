@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 19:05:42 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/16 16:15:37 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:38:20 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,18 +74,24 @@ void	print_decimal_part(long num, double decimal, t_list *info, char *base)
 
 int	func_module(va_list list, t_list *info)
 {
-	int	width;
-
-	(void)list;
-	width = atoi(info->width) - 1;
-	if (width < 0)
-		width = 0;
-	if (width > 0 && !ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	write(1, "%", 1);
-	if (width > 0 && ft_is_inarr(info->flag, "-"))
-		write_width(width);
-	return (1 + width);
+	char *str;
+	int width;
+	int len;
+	
+	len = 0;
+	/*width = atoi(info->width) - 1;
+	str = malloc(sizeof(char) * width + 1);
+	str[width + 1] = '\0';
+	if (width > 0)
+		str = ft_memset(str, ' ', width);
+	if (width > 0 && !ft_is_inarr(info->flag, "-") && len != -1)
+		len += ft_myputstr(str, info);
+	if (len != -1)*/
+		len += write(1, "%", 1);
+	/*if (width > 0 && ft_is_inarr(info->flag, "-") && len != -1)
+		len += ft_myputstr(str, info);
+	free(str);*/
+	return (len);
 }
 
 int	get_exponent(double *num)
