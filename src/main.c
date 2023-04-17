@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 09:16:03 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/13 13:12:53 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:56:07 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@
 int main()
 {
 	int valor = 34;
-	char *msg = "hola como estas";
-	char *str = "%b\n";
-	int j = ft_printf(str, valor);
-	//int i = printf(str, msg);
+	char *str = "%p %p %p\n";
+	int j = ft_printf(str, LONG_MAX, LONG_MAX, LONG_MAX);
+	int i = printf(str, LONG_MAX, LONG_MAX, LONG_MAX);
 	//printf("mio: %d, suyo: %d\n\n\n", j, i);
-
 }

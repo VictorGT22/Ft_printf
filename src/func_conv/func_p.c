@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:16:56 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 10:37:08 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:03:20 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	func_p(va_list list, t_list *info)
 	uintptr_t num;
 
 	len = 0;
-	num = va_arg(list, uintptr_t);
+	num = va_arg(list, unsigned long);
 	str = ft_getptr(num);
 	str = add_precs(info, str, false);
 	str = add_width(info, str, false);

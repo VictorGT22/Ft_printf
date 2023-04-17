@@ -6,30 +6,45 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/13 13:23:03 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:11:35 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
 
+
+char	*add_prefix(t_list *info, char *str)
+{
+	char *new;
+
+	/*if (info->conv == 'p')
+	{
+		new = ft_strjoin("0x", str);
+		free(str);
+		return (new);
+	}*/
+	/*if (ft_is_inarr(info->flag, "#") && str[0] != '0' || info->conv == 'p')
+	{
+		if (info->conv == 'o' || info->conv == 'O')
+			new = ft_strjoin("0", str);
+		if (info->conv == 'e' || info->conv == 'p')
+			new = ft_strjoin("0x", str);
+		else
+			new = ft_strjoin("0X", str);
+		free(str);
+		return (new);
+	}*/
+	return (str);
+}
+
 char	*add_signs(t_list *info, char *str, int neg)
 {
 	char *new;
 
-	if (neg == true)
+	str = add_prefix(info, str);
+	if (neg == true && !ft_strchr(str, '-'))
 	{
 		new = ft_strjoin("-", str);
-		free(str);
-		return (new);
-	}
-	if (ft_is_inarr(info->flag, "#") && str[0] != '0' || info->conv == 'p')
-	{
-		if (info->conv == 'o' || info->conv == 'O')
-			new = ft_strjoin("0", str);
-		else if (info->conv == 'e' || info->conv == 'p')
-			new = ft_strjoin("0x", str);
-		else
-			new = ft_strjoin("0X", str);
 		free(str);
 		return (new);
 	}
@@ -81,7 +96,7 @@ char *add_width(t_list *info, char *str, int neg)
 	}
 	if (ft_is_inarr(info->flag, "#") && str[0] != '0')
 		width--;
-	width = atoi(info->width) - ft_strlen(str) - ft_is_inarr(info->flag, "+") - neg;	
+	width = atoi(info->width) - ft_strlen(str) - ft_is_inarr(info->flag, "+") - neg;
 	if (width > 0)
 	{
 		zero = malloc(sizeof(char) * width + 1);
@@ -106,7 +121,7 @@ int	func_d(va_list list, t_list *info)
 {
 	char *str;
 	bool neg;
-	int num;
+	long long int num;
 	int len;
 
 	neg = false;

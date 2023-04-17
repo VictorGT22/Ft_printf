@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:54:03 by victgonz          #+#    #+#             */
-/*   Updated: 2023/01/31 15:39:43 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:55:34 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_itoa(int n)
 	str = malloc(sizeof(char) * ft_nbrlen(nbr) + 1);
 	if (!str)
 		return (NULL);
-	ft_memset(str, '\0', ft_nbrlen(nbr) + 1);
+	str = ft_memset(str, '\0', ft_nbrlen(nbr) + 1);
 	itoa_getnbr(nbr, str);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:41:55 by victgonz          #+#    #+#             */
-/*   Updated: 2023/01/31 15:58:43 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 10:08:08 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		len_s1 = ft_strlen((char *)s1);
 		len_s2 = ft_strlen((char *)s2);
 		str = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
+		ft_bzero(str, len_s1 + len_s2 + 1);
 		if (!str)
 			return (0);
 		x = -1;

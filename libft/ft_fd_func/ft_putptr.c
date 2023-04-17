@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:25:51 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 09:12:45 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 09:58:39 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_getptr(uintptr_t num)
 	str = malloc(sizeof(char) * len + 3);
 	if (!str)
 		return (NULL);
-	ft_bzero(str, len);
+	str = ft_memset(str, '\0', len);
 	ft_putptr(num, str, "0123456789abcdef");
 	return (str);
 }
