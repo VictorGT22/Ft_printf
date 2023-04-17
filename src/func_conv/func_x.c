@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 19:03:21 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 12:02:14 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:05:10 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	func_x(va_list list, t_list *info)
 
 	num = va_arg(list, unsigned int);
 	str = ft_convert_base(num, "0123456789abcdef");
+	if (num == 0 && (atoi(info->precision) == 0 || info->no_val_prec))
+		ft_bzero(str, strlen(str));
 	str = add_precs(info, str, false);
 	str = add_width(info, str, false);
 	len = ft_myputstr(str, info);
@@ -87,6 +89,8 @@ int	func_upper_x(va_list list, t_list *info)
 	neg = false;
 	num = va_arg(list, unsigned int);
 	str = ft_convert_base(num, "0123456789ABCDEF");
+	if (num == 0 && (atoi(info->precision) == 0 || info->no_val_prec))
+		ft_bzero(str, strlen(str));
 	str = add_precs(info, str, neg);
 	str = add_width(info, str, neg);
 	len = ft_myputstr(str, info);

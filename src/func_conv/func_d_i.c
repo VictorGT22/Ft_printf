@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 12:45:14 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/17 13:14:39 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ char *add_width(t_list *info, char *str, int neg)
 	if (ft_is_inarr(info->flag, " ") && !neg)
 	{
 		new = ft_strjoin(" ",str);
-		//ft_printf("str: %s\n", new);
 		free(str);
 		str = ft_strdup(new);
 		free(new);
@@ -137,6 +136,8 @@ int	func_d(va_list list, t_list *info)
 		num = num * -1;
 	}
 	str = ft_itoa(num);
+	if (num == 0 && (atoi(info->precision) == 0 || info->no_val_prec))
+		ft_bzero(str, strlen(str));
 	str = add_precs(info, str, neg);
 	str = add_width(info, str, neg);
 	len = ft_myputstr(str, info);
