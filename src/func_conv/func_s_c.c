@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 09:57:19 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 09:16:42 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:24:19 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	func_c(va_list list, t_list *info)
 {
-	char *str;
-	char c;
-	int width;
-	int len;
-	
+	char	*str;
+	char	c;
+	int		width;
+	int		len;
+
 	len = 0;
 	c = va_arg(list, int);
 	width = atoi(info->width) - 1;
 	str = malloc(sizeof(char) * width + 1);
-	str[width + 1] = '\0';
+	ft_bzero(str, width + 1);
 	if (width > 0)
 		str = ft_memset(str, ' ', width);
 	if (width > 0 && !ft_is_inarr(info->flag, "-") && len != -1)
@@ -85,6 +85,28 @@ int	get_len(t_list *info, char *s)
 }
 
 int	func_s(va_list list, t_list *info)
+{
+	char	*s;
+	int		total;
+	int		width;
+	int		len;
+
+	s = va_arg(list, char *);
+	total = 0;
+	len = get_len(info, s);
+	width = atoi(info->width) - len;
+	if (width < 0)
+		width = 0;
+	if (width > 0 && !ft_is_inarr(info->flag, "-"))
+		total += write_width(width);
+	if (s || !ft_is_inarr(info->flag, ".") || len != 0)
+		total += ft_myputstr(s, info);
+	if (width > 0 && ft_is_inarr(info->flag, "-"))
+		total += write_width(width);
+	return (total);
+}
+
+int	func_upper_s(va_list list, t_list *info)
 {
 	char	*s;
 	int		total;

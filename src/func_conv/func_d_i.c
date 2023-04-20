@@ -6,18 +6,19 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:48:07 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 09:09:14 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:41:22 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/include/ft_printf.h"
 
-
+/*
 char	*add_prefix(t_list *info, char *str)
 {
-	char *new;
+	char	*new;
 
-	if (ft_is_inarr(info->flag, "#") && str[0] != '0' || info->conv == 'p')
+	if (ft_is_inarr(info->flag, "#")
+		&& !ft_stronly_char(str, '0') || info->conv == 'p')
 	{
 		if (info->conv == 'o' || info->conv == 'O')
 			new = ft_strjoin("0", str);
@@ -33,7 +34,7 @@ char	*add_prefix(t_list *info, char *str)
 
 char	*add_signs(t_list *info, char *str, int neg)
 {
-	char *new;
+	char	*new;
 
 	str = add_prefix(info, str);
 	if (neg == true && !ft_strchr(str, '-'))
@@ -51,7 +52,7 @@ char	*add_signs(t_list *info, char *str, int neg)
 	return (str);
 }
 
-char *add_precs(t_list *info, char *str, int neg)
+char	*add_precs(t_list *info, char *str, int neg)
 {
 	char	*new;
 	int		precs;
@@ -72,7 +73,7 @@ char *add_precs(t_list *info, char *str, int neg)
 	return (str);
 }
 
-char *add_width(t_list *info, char *str, int neg)
+char	*add_width(t_list *info, char *str, int neg)
 {
 	char	*new;
 	int		width;
@@ -80,13 +81,7 @@ char *add_width(t_list *info, char *str, int neg)
 	char	*zero;
 
 	zero = NULL;
-	if (ft_is_inarr(info->flag, " ") && !neg)
-	{
-		new = ft_strjoin(" ",str);
-		free(str);
-		str = ft_strdup(new);
-		free(new);
-	}
+	/////////
 	if (ft_is_inarr(info->flag, "0") && !ft_is_inarr(info->flag, ".")
 		&& !ft_is_inarr(info->flag, "-"))
 		c = '0';
@@ -95,13 +90,16 @@ char *add_width(t_list *info, char *str, int neg)
 		c = ' ';
 		str = add_signs(info, str, neg);
 	}
-	width = atoi(info->width) - ft_strlen(str) - ft_is_inarr(info->flag, "+"); // - neg
-	if (ft_is_inarr(info->flag, "#") && str[0] != '0'
-		|| c != ' ' && ft_is_inarr(info->flag, "0") && neg)
+	///////
+	width = atoi(info->width) - ft_strlen(str); //ft_is_inarr(info->flag, "+") - neg
+	if (ft_is_inarr(info->flag, "+") && !neg && c == '0')
 		width--;
-	//printf("width: %d\n", atoi(info->width));
-	//printf("len: %d\n", ft_strlen(str));
-	//printf("total width: %d\n", width);
+	if (c == '0' && neg	|| ft_is_inarr(info->flag, " ") && !neg)
+		width--;
+	if (ft_is_inarr(info->flag, "#") && (info->conv == 'x' ||
+		info->conv == 'X') && c == '0' && !ft_stronly_char(str, '0'))
+		width -= 2;
+	//////	
 	if (width > 0)
 	{
 		zero = malloc(sizeof(char) * width + 1);
@@ -122,12 +120,26 @@ char *add_width(t_list *info, char *str, int neg)
 	return (str);
 }
 
+char	*add_space(t_list *info, char *str, int neg)
+{
+	char	*new;
+
+	if (ft_is_inarr(info->flag, " ") && !neg)
+	{
+		new = ft_strjoin(" ", str);
+		free(str);
+		str = ft_strdup(new);
+		free(new);
+	}
+	return (str);
+}*/
+
 int	func_d(va_list list, t_list *info)
 {
-	char *str;
-	bool neg;
-	long long int num;
-	int len;
+	char		*str;
+	bool		neg;
+	long int	num;
+	int			len;
 
 	neg = false;
 	num = va_arg(list, int);
@@ -136,11 +148,14 @@ int	func_d(va_list list, t_list *info)
 		neg = true;
 		num = num * -1;
 	}
-	str = ft_itoa(num);
+	str = ft_convert_base(num, "0123456789");
+	if (!str)
+		return (-1);
 	if (num == 0 && (atoi(info->precision) == 0 || info->no_val_prec))
 		ft_bzero(str, strlen(str));
 	str = add_precs(info, str, neg);
 	str = add_width(info, str, neg);
+	str = add_space(info, str, neg);
 	len = ft_myputstr(str, info);
 	free(str);
 	return (len);

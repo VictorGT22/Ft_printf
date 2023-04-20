@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:34:32 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 09:27:45 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:18:14 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	func_b(va_list list, t_list *info)
 {
-	char *str;
-	unsigned int num;
-	int len;
+	char			*str;
+	unsigned int	num;
+	int				len;
 
 	num = va_arg(list, unsigned int);
 	str = ft_convert_base(num, "01");

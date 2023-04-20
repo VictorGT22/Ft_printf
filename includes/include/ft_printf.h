@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 15:29:11 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/13 13:22:24 by victgonz         ###   ########.fr       */
+/*   Created: 2023/04/20 11:17:35 by victgonz          #+#    #+#             */
+/*   Updated: 2023/04/20 12:08:38 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 # define FT_PRINTF_H
 
 # include "struct.h"
-# include "libft.h"
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <string.h>
 # include <ctype.h>
-# include <stdlib.h>
 # include <math.h>
 # include <stdint.h>
 # include <stdbool.h>
@@ -78,6 +76,7 @@ int		func_u(va_list list, t_list *info);
 int		func_x(va_list list, t_list *info);
 int		func_upper_x(va_list list, t_list *info);
 int		func_c(va_list list, t_list *info);
+int		func_upper_c(va_list list, t_list *info);
 int		func_module(va_list list, t_list *info);
 int		func_e(va_list list, t_list *info);
 int		func_upper_e(va_list list, t_list *info);
@@ -91,11 +90,6 @@ int		func_n(va_list list, t_list *info);
 int		func_b(va_list list, t_list *info);
 int		func_r(va_list list, t_list *info);
 
-//func prec width
-char	*add_signs(t_list *info, char *str, int neg);
-char 	*add_width(t_list *info, char *str, int neg);
-char 	*add_precs(t_list *info, char *str, int neg);
-
 //esternal func d
 int		write_ext_nums(t_list *info, long long int nbr, int width, int prec);
 int		write_external_2(t_list *info, long long int nbr1,
@@ -105,5 +99,13 @@ bool	cond_second_space(t_list *info, long long int nbr1, bool space);
 bool	cond_third_space(t_list *info, long long int nbr1,
 			bool space, int prec);
 int		write_external(t_list *info, long long int nbr, int width, int prec);
+
+//bonus
+char	*add_space(t_list *info, char *str, int neg);
+char	get_width_char(t_list *info, char *str, int neg);
+int		get_total_width(t_list *info, char *str, int neg, int c);
+char	*add_signs(t_list *info, char *str, int neg);
+char	*add_precs(t_list *info, char *str, int neg);
+char	*add_width(t_list *info, char *str, int neg);
 
 #endif

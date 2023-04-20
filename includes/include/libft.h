@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:21:08 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 09:07:14 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:09:05 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 int				ft_isalpha(char c);
 int				ft_strlen(const char *str);
 int				ft_nbrlen(long long int nbr);
-int             ft_unbrlen(unsigned long int nbr);
+int				ft_unbrlen(unsigned long int nbr);
 int				ft_isdigit(char c);
 int				ft_isalnum(char c);
 int				ft_isascii(int c);
@@ -52,8 +52,8 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			**ft_split(char const *str, char c);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_itoa(int n);
-char            *ft_convert_base(int n, char *base);
-char            *ft_utoa(unsigned int n);
+char			*ft_convert_base(long long n, char *base);
+char			*ft_utoa(unsigned int n);
 char			*ft_strmapi(char const *str, char (*f)(unsigned int, char));
 void			ft_striteri(char *str, void (*f)(unsigned int, char*));
 void			ft_putchar_fd(char c, int fd);
@@ -64,5 +64,5 @@ void			free_arr(char **arr);
 int				ft_isspace(char c);
 void			ft_arrset(char **arr, char *str, int len);
 int				ft_strcmp(const char *s1, const char *s2);
-
+int				ft_stronly_char(char *str, char c);
 #endif

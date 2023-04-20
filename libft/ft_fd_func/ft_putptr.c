@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:25:51 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 10:52:09 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:09:24 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	ft_putptr(uintptr_t num, char *str, char *base)
 
 char	*ft_getptr(uintptr_t num)
 {
-	char *str;
-	int len;
+	char	*str;
+	int		len;
 
 	len = 0;
 	ft_len_nbr_base_u(num, "0123456789abcdef", &len);

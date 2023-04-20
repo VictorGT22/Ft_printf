@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:19:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/20 09:04:35 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 08:53:55 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	fill_operations2(t_fnc_ptr *operations)
 	operations[11].op = 'X';
 	operations[11].ptr = &func_upper_x;
 	operations[12].op = 'c';
-	operations[12].ptr = &func_c;
+	operations[12].ptr = &func_upper_c;
 	operations[13].op = 'C';
 	operations[13].ptr = &func_c;
 	operations[14].op = '%';

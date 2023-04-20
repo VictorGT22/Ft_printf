@@ -49,6 +49,7 @@ SRCS = 	ft_fd_func/ft_putchar_fd.c		\
 		ft_str_func/ft_atoi.c			\
 		ft_str_func/ft_strcmp.c			\
 		ft_str_func/ft_strcpy.c			\
+		ft_str_func/ft_stronly_char.c	\
 		ft_free_func/free.c				\
 		ft_arr_func/ft_arrset.c			\
 		ft_arr_func/ft_add_in_arr.c		\

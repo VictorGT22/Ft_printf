@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:36:57 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 13:04:56 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:25:30 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 int	func_u(va_list list, t_list *info)
 {
-	char *str;
-	bool neg;
-	unsigned int num;
-	int len;
+	char			*str;
+	bool			neg;
+	unsigned int	num;
+	int				len;
 
 	neg = false;
 	num = va_arg(list, unsigned int);
 	str = ft_utoa(num);
+	if (!str)
+		return (-1);
 	if (num == 0 && (atoi(info->precision) == 0 || info->no_val_prec))
 		ft_bzero(str, strlen(str));
 	str = add_precs(info, str, neg);
@@ -31,4 +33,3 @@ int	func_u(va_list list, t_list *info)
 	free(str);
 	return (len);
 }
-

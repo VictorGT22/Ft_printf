@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:54:03 by victgonz          #+#    #+#             */
-/*   Updated: 2023/01/31 15:39:43 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:10:17 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	utoa_getnbr(unsigned long int nbr, char *str)
 
 char	*ft_utoa(unsigned int n)
 {
-	char		*str;
+	char				*str;
 	unsigned long int	nbr;
 
 	nbr = (long int)n;
@@ -41,5 +41,3 @@ char	*ft_utoa(unsigned int n)
 	utoa_getnbr(nbr, str);
 	return (str);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 15:19:54 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 13:13:57 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:11:28 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_myputstr(char *str, t_list *info)
 {
 	int	i;
-	int error;
+	int	error;
 	int	len;
 
 	i = 0;

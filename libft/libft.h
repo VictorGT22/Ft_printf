@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:21:08 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/17 11:37:30 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 12:11:56 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int				ft_isalpha(char c);
 int				ft_strlen(const char *str);
 int				ft_ptrlen(uintptr_t num);
 int				ft_nbrlen(long long int nbr);
-int             ft_unbrlen(unsigned long int nbr);
-void	        ft_len_nbr_base(long long int nb, char *base, int *len);
-void    	    ft_len_nbr_base_u(unsigned long int nb, char *base, int *len);
+int				ft_unbrlen(unsigned long int nbr);
+void			ft_len_nbr_base(long long int nb, char *base, int *len);
+void			ft_len_nbr_base_u(unsigned long int nb, char *base, int *len);
 int				ft_isdigit(char c);
 int				ft_isalnum(char c);
 int				ft_isascii(int c);
@@ -50,7 +50,7 @@ void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dst, const void *src, size_t n);
 void			*ft_memmove(void *dst, const void *src, size_t n);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
-char    		*ft_strcpy(char *s1, char *s2);
+char			*ft_strcpy(char *s1, char *s2);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			**ft_split(char const *str, char c);
@@ -70,5 +70,6 @@ int				ft_strcmp(const char *s1, const char *s2);
 void			ft_putptr(uintptr_t num, char *base);
 void			ft_add_in_arr(char *arr, char c);
 char			*ft_convert_base(long long int n, char *base);
+int				ft_stronly_char(char *str, char c);
 
 #endif

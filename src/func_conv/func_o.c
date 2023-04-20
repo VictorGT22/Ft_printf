@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 21:58:06 by victgonz          #+#    #+#             */
-/*   Updated: 2023/02/15 10:35:06 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:23:35 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	func_o(va_list list, t_list *info)
 {
-	char *str;
-	bool neg;
-	int num;
-	int len;
+	char	*str;
+	bool	neg;
+	int		num;
+	int		len;
 
 	neg = false;
 	num = va_arg(list, int);
