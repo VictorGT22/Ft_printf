@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 10:34:32 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/20 11:18:14 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:52:17 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ int	func_b(va_list list, t_list *info)
 	if (!str)
 		return (-1);
 	str = add_precs(info, str, false);
+	if (!str)
+		return (-1);
 	str = add_width(info, str, false);
+	if (!str)
+		return (-1);
 	len = ft_myputstr(str, info);
 	free(str);
 	return (len);

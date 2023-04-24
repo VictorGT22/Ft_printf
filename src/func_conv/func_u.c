@@ -6,7 +6,7 @@
 /*   By: victgonz <victgonz@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 18:36:57 by victgonz          #+#    #+#             */
-/*   Updated: 2023/04/20 11:25:30 by victgonz         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:48:26 by victgonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int	func_u(va_list list, t_list *info)
 		ft_bzero(str, strlen(str));
 	str = add_precs(info, str, neg);
 	str = add_width(info, str, neg);
-	len = ft_strlen(str);
-	ft_putstr_fd(str, 1);
+	len = ft_myputstr(str, info);
 	free(str);
 	return (len);
 }
